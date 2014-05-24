@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77603954193146D20054E6FD /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77603953193146D20054E6FD /* Singleton.m */; };
+		7760395A19314A700054E6FD /* OptionScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760395919314A700054E6FD /* OptionScene.m */; };
+		7760395D19314A900054E6FD /* CreditsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760395C19314A900054E6FD /* CreditsScene.m */; };
+		7760396019314DE80054E6FD /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760395F19314DE80054E6FD /* GameScene.m */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
 		B71F5913188484E7003F4D28 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5909188484E7003F4D28 /* iPad.png */; };
@@ -55,6 +59,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		77603952193146D20054E6FD /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Singleton.h; path = Source/Singleton.h; sourceTree = "<group>"; };
+		77603953193146D20054E6FD /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Singleton.m; path = Source/Singleton.m; sourceTree = "<group>"; };
+		7760395819314A700054E6FD /* OptionScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionScene.h; sourceTree = "<group>"; };
+		7760395919314A700054E6FD /* OptionScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionScene.m; sourceTree = "<group>"; };
+		7760395B19314A900054E6FD /* CreditsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreditsScene.h; sourceTree = "<group>"; };
+		7760395C19314A900054E6FD /* CreditsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreditsScene.m; sourceTree = "<group>"; };
+		7760395E19314DE80054E6FD /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		7760395F19314DE80054E6FD /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
 		B71F5908188484E7003F4D28 /* iPad-old@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old@2x.png"; path = "Icons/iPad-old@2x.png"; sourceTree = "<group>"; };
 		B71F5909188484E7003F4D28 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad.png; path = Icons/iPad.png; sourceTree = "<group>"; };
@@ -111,6 +123,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		77603956193146DA0054E6FD /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				77603952193146D20054E6FD /* Singleton.h */,
+				77603953193146D20054E6FD /* Singleton.m */,
+				B737893D1807617C0076A88C /* AppDelegate.h */,
+				B737893E1807617C0076A88C /* AppDelegate.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		77603957193149AF0054E6FD /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				B7378992180767190076A88C /* MainScene.h */,
+				B7378993180767190076A88C /* MainScene.m */,
+				7760395819314A700054E6FD /* OptionScene.h */,
+				7760395919314A700054E6FD /* OptionScene.m */,
+				7760395B19314A900054E6FD /* CreditsScene.h */,
+				7760395C19314A900054E6FD /* CreditsScene.m */,
+				7760395E19314DE80054E6FD /* GameScene.h */,
+				7760395F19314DE80054E6FD /* GameScene.m */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
 		9222E2B918734FF800A246C7 /* libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,10 +160,8 @@
 		B737893C1807616C0076A88C /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				B737893D1807617C0076A88C /* AppDelegate.h */,
-				B737893E1807617C0076A88C /* AppDelegate.m */,
-				B7378992180767190076A88C /* MainScene.h */,
-				B7378993180767190076A88C /* MainScene.m */,
+				77603957193149AF0054E6FD /* Scenes */,
+				77603956193146DA0054E6FD /* Core */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -319,8 +355,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
+				7760395A19314A700054E6FD /* OptionScene.m in Sources */,
+				77603954193146D20054E6FD /* Singleton.m in Sources */,
+				7760396019314DE80054E6FD /* GameScene.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
+				7760395D19314A900054E6FD /* CreditsScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
