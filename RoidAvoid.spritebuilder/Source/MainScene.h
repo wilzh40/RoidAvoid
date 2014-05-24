@@ -10,7 +10,7 @@
 
 @interface MainScene : CCNode {
 
-    CCLabelTTF* lblTestTitle,* highScoreLabel;
+    CCLabelTTF* highScoreLabel;
     
 }
 @end

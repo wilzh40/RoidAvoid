@@ -15,6 +15,7 @@
     
     backgroundVolume.sliderValue = [[[NSUserDefaults standardUserDefaults] objectForKey:@"BGVolume"]floatValue];
     effectsVolume.sliderValue = [[[NSUserDefaults standardUserDefaults] objectForKey:@"FXVolume"]floatValue];
+    [super onEnter];
 }
 
 - (void) pressedBack
@@ -45,6 +46,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:sender.sliderValue] forKey:@"FXVolume"];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
+
 - (void)valueChanged2:(CCSlider *)sender
 {
     // Change volume of your sounds
