@@ -8,6 +8,9 @@
 
 #import "CCNode.h"
 
-@interface MainScene : CCNode
+@interface MainScene : CCNode {
 
+    CCLabelTTF* lblTestTitle,* highScoreLabel;
+    
+}
 @end

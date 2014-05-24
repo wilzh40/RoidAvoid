@@ -10,4 +10,29 @@
 
 @implementation MainScene
 
+- (void) pressedPlay
+{
+    CCScene *scene = [CCBReader loadAsScene:@"GameScene"];
+    
+    [[CCDirector sharedDirector]pushScene:scene withTransition:[CCTransition transitionFadeWithDuration:0.5f]];
+    
+    
+}
+
+- (void) pressedOptions
+{
+    CCScene *scene = [CCBReader loadAsScene:@"OptionScene"];
+    
+    [[CCDirector sharedDirector]pushScene:scene withTransition:[CCTransition transitionFadeWithDuration:0.5f]];
+    
+    
+}
+
+- (void) pressedCredits
+{
+    CCScene *scene = [CCBReader loadAsScene:@"CreditsScene"];
+    [[CCDirector sharedDirector]pushScene:scene withTransition:[CCTransition transitionFadeWithDuration:0.5f]];
+}
+
+
 @end
