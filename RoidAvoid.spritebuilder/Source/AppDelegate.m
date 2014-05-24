@@ -53,13 +53,23 @@
     //[cocos2dSetup setObject:kEAGLColorFormatRGB565 forKey:CCConfigPixelFormat];
     
     [self setupCocos2dWithOptions:cocos2dSetup];
-    
+    [self setAudio];
     return YES;
 }
 
 - (CCScene*) startScene
 {
     return [CCBReader loadAsScene:@"MainScene"];
+}
+
+- (void) setAudio
+{
+    [[OALSimpleAudio sharedInstance] playBg:@"Menu_1.mp3" loop:YES];
+ 
+    [OALSimpleAudio sharedInstance].bgVolume = [[[NSUserDefaults standardUserDefaults]objectForKey:@"BGVolume"]floatValue];
+    
+    [OALSimpleAudio sharedInstance].effectsVolume = [[[NSUserDefaults standardUserDefaults]objectForKey:@"FXVolume"]floatValue];
+    
 }
 
 @end
