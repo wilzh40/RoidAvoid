@@ -52,7 +52,9 @@
     // Do any extra configuration of Cocos2d here (the example line changes the pixel format for faster rendering, but with less colors)
     //[cocos2dSetup setObject:kEAGLColorFormatRGB565 forKey:CCConfigPixelFormat];
     
-    //[cocos2dSetup setObject:@"YES" forKey:CCSetupShowDebugStats];
+
+   // [cocos2dSetup setObject:@"YES" forKey:CCSetupShowDebugStats];
+
     [self setupCocos2dWithOptions:cocos2dSetup];
     [self setAudio];
     return YES;
@@ -66,6 +68,7 @@
 - (void) setAudio
 {
     [[OALSimpleAudio sharedInstance] playBg:@"Menu_1.mp3" loop:YES];
+    [[OALSimpleAudio sharedInstance] preloadEffect:@"thud.caf"];
  
     [OALSimpleAudio sharedInstance].bgVolume = [[[NSUserDefaults standardUserDefaults]objectForKey:@"BGVolume"]floatValue];
     
