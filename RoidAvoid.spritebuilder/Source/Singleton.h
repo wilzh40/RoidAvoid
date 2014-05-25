@@ -14,6 +14,19 @@
 #define frandom_range(low,high) ((high-low)*frandom)+low
 #define random_range(low,high) (arc4random()%(high-low+1))+low
 #define RTD(radians) (radian/3.14159*180)
+
+#define ASTEROID_ANGLE_MIN (0.4f)
+#define ASTEROID_ANGLE_MAX (0.8f)
+#define ASTEROID_ANGLEVELOCITY_MIN (-1.0f)
+#define ASTEROID_ANGLEVELOCITY_MAX (1.0f)
+#define ASTEROID_SIZE_MIN (0.1f)
+#define ASTEROID_SIZE_MAX (0.2f)
+#define ASTEROID_SPEED_MIN (13.f)
+#define ASTEROID_SPEED_MAX (18.f)
+#define GRAVITY_CONSTANT (400000000.0f)
+#define HERO_STAND_HEIGHT (58.0f)
+#define HERO_INITIAL_ANGLE (3.14/2)
+
 @interface Singleton : NSObject {
     int _score;
     bool _firstGame;
