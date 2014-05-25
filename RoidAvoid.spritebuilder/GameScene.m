@@ -110,7 +110,7 @@
             }
             CGPoint distanceVector = ccpSub(gravityBody.position, child.position);
             float distance = powf(distanceVector.x, 2) + powf(distanceVector.y, 2);
-            float angle = atan2f(distanceVector.y, distanceVector.x);
+            //float angle = atan2f(distanceVector.y, distanceVector.x);
             //NSLog(@"affectedByGravity x:%f y:%f α:%f r:%f", child.position.x, child.position.y, angle, distance);
             [physicsBody applyForce: ccpMult(distanceVector, gravityMultiplier / powf(distance, 2))];
         }
@@ -123,7 +123,7 @@
     if (curTime > nextFallTime) {
         //Sets Next Fall time and interval, procedurally decrease by _score
         
-        float fallIntervalMin = 5 - log10f(singleton.score)*2;
+        float fallIntervalMin = 3.8 - log10f(singleton.score);
         if (fallIntervalMin < 0)
             fallIntervalMin = 0.1;
         float fallIntervalMax = fallIntervalMin * 1.5;
@@ -271,7 +271,7 @@
 
 - (void) moveHero:(CCTime) dt
 {
-    heroAngle += dt * self->heroMovement;
+    heroAngle += dt * self->heroMovement * HERO_MOVE_SPEED;
     [self updateHeroToRotation];
 }
 

@@ -15,7 +15,7 @@
 #define random_range(low,high) (arc4random()%(high-low+1))+low
 #define RTD(radians) (radian/3.14159*180)
 
-#define ASTEROID_SPAWN_RADIUS (350.0f)
+#define ASTEROID_SPAWN_RADIUS (325.0f)
 
 #define ASTEROID_ANGLE_MIN (0.4f)
 #define ASTEROID_ANGLE_MAX (0.8f)
@@ -37,12 +37,13 @@
 #define ASTEROID_OUTLIER_SPEED_MIN (15.f)
 #define ASTEROID_OUTLIER_SPEED_MAX (22.f)
 
-#define GRAVITY_CONSTANT (800000000.0f)
+#define GRAVITY_CONSTANT (600000000.0f)
 
 #define CRATER_STAND_HEIGHT (48.0f)
 
-#define HERO_STAND_HEIGHT (58.0f)
 #define HERO_INITIAL_ANGLE (3.14/2)
+#define HERO_MOVE_SPEED (2.0f)
+#define HERO_STAND_HEIGHT (58.0f)
 
 @interface Singleton : NSObject {
     int _score;
