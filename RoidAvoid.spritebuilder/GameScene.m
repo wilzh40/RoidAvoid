@@ -37,7 +37,7 @@
     physicsNode.sleepTimeThreshold = 10.0f;
     physicsNode.gravity = ccp(0,0);
     singleton.firstGame = NO;
-    
+    singleton.score = 0;
     asteroids = [NSMutableArray array];
     gravityBodies = [NSMutableArray array];
     
@@ -146,6 +146,11 @@
     [physicsNode removeChild:asteroid cleanup:YES];
 }
 
+- (void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair hero:(CCNode *)hero asteroid:(CCNode *)asteroid
+{
+    NSLog(@"GameOver");
+    [self handleGameOver];
+}
 #pragma mark Transition
 
 - (void) handleGameOver {

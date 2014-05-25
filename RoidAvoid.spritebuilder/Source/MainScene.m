@@ -10,6 +10,14 @@
 
 @implementation MainScene
 
+- (void) onEnter
+{
+    int highScore = [[[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"] intValue ];
+    
+    [highScoreLabel setString:[NSString stringWithFormat:@"High Score: %i",highScore]];
+    [super onEnter];
+}
+
 - (void) pressedPlay
 {
     CCScene *scene = [CCBReader loadAsScene:@"GameScene"];
