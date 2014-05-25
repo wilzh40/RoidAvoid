@@ -91,7 +91,7 @@
 - (void) applyGravity
 {
     float gravityRange = 200;
-    float gravityMultiplier = 0.5ccf;
+    float gravityMultiplier = 0.5f;
     for (CCNode *gravityBody in gravityBodies){
         for (CCNode* c in physicsNode.children) {
             for (CCNode *child in c.children) {
