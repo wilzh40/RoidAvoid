@@ -11,14 +11,22 @@
 
 @implementation Asteroid
 
--(void)onEnter
+- (void) onEnter
 {
     
     
     singleton = [Singleton sharedManager];
     winSize = [[CCDirector sharedDirector]viewSize];
 	
+    
+    [self setVars];
 	[super onEnter];
+    
+    
+}
+- (void) setVars
+{
+    self.scale = 0.1f;
 }
 
 @end
