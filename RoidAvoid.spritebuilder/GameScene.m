@@ -37,7 +37,7 @@
     physicsNode.sleepTimeThreshold = 10.0f;
     physicsNode.gravity = ccp(0,0);
     singleton.firstGame = NO;
-    
+    singleton.score = 0;
     asteroids = [NSMutableArray array];
     gravityBodies = [NSMutableArray array];
     

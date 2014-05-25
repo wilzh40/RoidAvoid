@@ -1337,7 +1337,7 @@
 				<key>memberVarAssignmentName</key>
 				<string>highScoreLabel</string>
 				<key>memberVarAssignmentType</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1529,6 +1529,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
