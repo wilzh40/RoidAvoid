@@ -144,6 +144,15 @@
 {
     [asteroids removeObject:asteroid];
     [physicsNode removeChild:asteroid cleanup:YES];
+    
+    //Add Crater
+    
+    CCNode *crater = [CCBReader load:@"Crater"];
+    CGPoint collisionPoint = asteroid.position;
+    
+    //Play Sound
+    [[OALSimpleAudio sharedInstance]playEffect:@"Thud.wav"];
+    
 }
 
 - (void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair hero:(CCNode *)hero asteroid:(CCNode *)asteroid
