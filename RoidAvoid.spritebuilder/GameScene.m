@@ -40,13 +40,16 @@
     singleton.firstGame = NO;
     
     asteroids = [NSMutableArray array];
+
+    [self setPlanet];
     NSLog(@"Setup Scene");
     
 }
 
 - (void) setPlanet
 {
-    
+    earth = [CCBReader load:@"Earth"];
+    [physicsNode addChild:earth];
 }
 
 - (void) setHero
@@ -92,35 +95,14 @@
 
 - (void) genAsteroid:(CGPoint)position
 {
-    float widths[] = {
-        0, // Asteroid 0
-        536,
-        355,
-        374,
-        563,
-        513,
-    };
-    float heights[] = {
-        0, // Asteroid 0
-        511,
-        364,
-        515,
-        457,
-        489,
-    };
-
     int variation = random_range(1, 5);
-//    position.x -= widths[variation]/8;
-//    position.y -= heights[variation]/8;
-
     CCNode *rock = [CCBReader load:[NSString stringWithFormat:@"asteroid_%i",variation]];
-
     rock.position = position;
 
    	[asteroids addObject:rock];
-    
+
 	[physicsNode addChild:rock];
-  }
+}
 
 
 #pragma mark Collision

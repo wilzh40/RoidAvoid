@@ -14,6 +14,7 @@
 		77603970193153AC0054E6FD /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760396F193153AC0054E6FD /* Hero.m */; };
 		77603973193153B40054E6FD /* Asteroid.m in Sources */ = {isa = PBXBuildFile; fileRef = 77603972193153B40054E6FD /* Asteroid.m */; };
 		77603978193157B40054E6FD /* Menu_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 77603977193157B40054E6FD /* Menu_1.mp3 */; };
+		8E71404C1931AFC000AC6351 /* Planet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E71404B1931AFC000AC6351 /* Planet.m */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
 		B71F5913188484E7003F4D28 /* iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5909188484E7003F4D28 /* iPad.png */; };
@@ -75,6 +76,8 @@
 		77603971193153B40054E6FD /* Asteroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asteroid.h; sourceTree = "<group>"; };
 		77603972193153B40054E6FD /* Asteroid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asteroid.m; sourceTree = "<group>"; };
 		77603977193157B40054E6FD /* Menu_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Menu_1.mp3; sourceTree = "<group>"; };
+		8E71404A1931AFC000AC6351 /* Planet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Planet.h; sourceTree = "<group>"; };
+		8E71404B1931AFC000AC6351 /* Planet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Planet.m; sourceTree = "<group>"; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
 		B71F5908188484E7003F4D28 /* iPad-old@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old@2x.png"; path = "Icons/iPad-old@2x.png"; sourceTree = "<group>"; };
 		B71F5909188484E7003F4D28 /* iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iPad.png; path = Icons/iPad.png; sourceTree = "<group>"; };
@@ -162,6 +165,8 @@
 			children = (
 				7760396E193153AC0054E6FD /* Hero.h */,
 				7760396F193153AC0054E6FD /* Hero.m */,
+				8E71404A1931AFC000AC6351 /* Planet.h */,
+				8E71404B1931AFC000AC6351 /* Planet.m */,
 				77603971193153B40054E6FD /* Asteroid.h */,
 				77603972193153B40054E6FD /* Asteroid.m */,
 			);
@@ -389,6 +394,7 @@
 				77603954193146D20054E6FD /* Singleton.m in Sources */,
 				7760396019314DE80054E6FD /* GameScene.m in Sources */,
 				77603973193153B40054E6FD /* Asteroid.m in Sources */,
+				8E71404C1931AFC000AC6351 /* Planet.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 				7760395D19314A900054E6FD /* CreditsScene.m in Sources */,

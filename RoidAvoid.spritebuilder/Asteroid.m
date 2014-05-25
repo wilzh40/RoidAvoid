@@ -24,13 +24,13 @@
     
     
 }
+
 - (void) setVars
 {
     for (CCNode *children in self.children) {
-    float scale = frandom_range(0.1f, 0.2f);
-    children.scale = scale;
+        float scale = frandom_range(0.1f, 0.2f);
+        children.scale = scale;
     }
-
 }
 
 @end

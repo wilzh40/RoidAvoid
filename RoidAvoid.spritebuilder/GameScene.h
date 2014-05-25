@@ -17,6 +17,7 @@
     CGSize winSize;
     Singleton *singleton;
     CCPhysicsNode *physicsNode;
+    CCNode *earth;
     
     NSMutableArray *asteroids;
     
