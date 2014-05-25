@@ -152,16 +152,31 @@
 
 - (void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair planet:(CCNode *)planet asteroid:(CCNode *)asteroid
 {
-    [asteroids removeObject:asteroid];
-    [physicsNode removeChild:asteroid cleanup:YES];
+  
     
     //Add Crater
     
     CCNode *crater = [CCBReader load:@"Crater"];
-    CGPoint collisionPoint = asteroid.position;
+//    CGPoint collisionVelocity = asteroid.physicsBody.velocity;
+//    float collisionAngle = ccpToAngle(collisionVelocity);
+//    CGPoint collisionOffset = ccpMult(ccp(cosf(collisionAngle),sinf(collisionAngle)),0.5f);
+//    crater.rotation = (collisionAngle+3.14159/4)/3.14159*180;
+//    crater.position= ccpAdd(collisionOffset, ccpMult(collisionVelocity, 1));
+    
+    
+    [physicsNode addChild:crater z:10];
+    [self positionNodeOnEarth:crater atAngle:ccpToAngle(asteroid.position) atHeight:40.0f];
+    
+    CCActionFiniteTime *fadeOut = [CCActionFadeOut actionWithDuration:1.5f];
+    CCActionRemove *action = [CCActionRemove action];
+    [crater runAction:[CCActionSequence actionWithArray:@[fadeOut,action]]];
+    
     
     //Play Sound
-    [[OALSimpleAudio sharedInstance]playEffect:@"Thud.wav"];
+    [[OALSimpleAudio sharedInstance]playEffect:@"thud.caf"];
+    
+    [asteroids removeObject:asteroid];
+    [physicsNode removeChild:asteroid cleanup:YES];
     
 }
 

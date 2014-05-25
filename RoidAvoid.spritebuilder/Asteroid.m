@@ -17,12 +17,12 @@
     winSize = [[CCDirector sharedDirector]viewSize];
     
     
-    //adds a particl
-    CCParticleGalaxy *particleSystem = [CCParticleGalaxy particleWithTotalParticles:20];
-    [particleSystem setTexture:[CCTexture textureWithFile:@"ccbParticleSmoke.png"]];
-    particleSystem.emitterMode = CCParticleSystemPositionTypeRelative;
-    [self addChild:particleSystem];
-                              
+//    //adds a particl
+//    CCParticleGalaxy *particleSystem = [CCParticleGalaxy particleWithTotalParticles:20];
+//    [particleSystem setTexture:[CCTexture textureWithFile:@"ccbParticleSmoke.png"]];
+//    particleSystem.emitterMode = CCParticleSystemPositionTypeRelative;
+//    [self addChild:particleSystem];
+//                              
 	
     [self setVars];
 	[super onEnter];
