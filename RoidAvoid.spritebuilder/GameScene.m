@@ -65,6 +65,7 @@
     [self genAsteroids];
     
 }
+
 - (void) genAsteroids
 {
     curTime = CACurrentMediaTime();
@@ -82,23 +83,40 @@
         nextFallTime = fallInterval + curTime;
         //singleton.asteroidX = frandom_range(-winSize.width/4, winSize.width/4);
         //loat randomY = frandom_range(winSize.height, winSize.height + logf(_score));
-//        CGPoint startingPosition = ccp(CCRANDOM_ON_UNIT_CIRCLE().x*radius+winSize.width/2,CCRANDOM_IN_UNIT_CIRCLE().x*radius+winSize.height/2);
-       CGPoint circle = ccpMult(CCRANDOM_ON_UNIT_CIRCLE(), radius);
+        //CGPoint startingPosition = ccp(CCRANDOM_ON_UNIT_CIRCLE().x*radius+winSize.width/2,CCRANDOM_IN_UNIT_CIRCLE().x*radius+winSize.height/2);
+        CGPoint circle = ccpMult(CCRANDOM_ON_UNIT_CIRCLE(), radius);
         CGPoint startingPosition = ccp(circle.x,circle.y);
         [self genAsteroid:startingPosition];
-        
-        
     }
 }
-- (void) genAsteroid:(CGPoint)position
 
+- (void) genAsteroid:(CGPoint)position
 {
-    
-	CCNode *rock = [CCBReader load:[NSString stringWithFormat:@"asteroid_%i",random_range(1, 5)]];
-    //CCNode *rock = [CCBReader load:@"asteroid_1"];
-    
+    float widths[] = {
+        0, // Asteroid 0
+        536,
+        355,
+        374,
+        563,
+        513,
+    };
+    float heights[] = {
+        0, // Asteroid 0
+        511,
+        364,
+        515,
+        457,
+        489,
+    };
+
+    int variation = random_range(1, 5);
+    position.x -= widths[variation]/8;
+    position.y -= heights[variation]/8;
+
+    CCNode *rock = [CCBReader load:[NSString stringWithFormat:@"asteroid_%i",variation]];
+
     rock.position = position;
-    
+
    	[asteroids addObject:rock];
     
 	[physicsNode addChild:rock];
