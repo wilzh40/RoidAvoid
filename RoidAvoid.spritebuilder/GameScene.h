@@ -19,7 +19,7 @@
     CCPhysicsNode *physicsNode;
     CCNode *earth;
     
-    NSMutableArray *asteroids;
+    NSMutableArray *asteroids, *gravityBodies;
     
     CCLabelTTF *scoreLabel;
     

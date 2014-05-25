@@ -21,6 +21,7 @@
     for (CCNode *child in self.children) {
         child.scale = 1.5f;
     }
+    
 }
 
 @end

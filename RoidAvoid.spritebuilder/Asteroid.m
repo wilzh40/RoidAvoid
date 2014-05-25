@@ -39,7 +39,11 @@
         [physicsBody setVelocity:ccpMult(asteroidPos, -speed)];
         NSLog(@"%f",angle);
         
+
         
+        
+        
+
 
     }
 }

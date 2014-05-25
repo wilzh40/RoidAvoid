@@ -40,7 +40,8 @@
     singleton.firstGame = NO;
     
     asteroids = [NSMutableArray array];
-
+    gravityBodies = [NSMutableArray array];
+    
     [self setPlanet];
     NSLog(@"Setup Scene");
     
@@ -50,6 +51,7 @@
 {
     earth = [CCBReader load:@"Earth"];
     [physicsNode addChild:earth];
+    [gravityBodies addObject:earth];
 }
 
 - (void) setHero
@@ -66,9 +68,26 @@
     
     //some simple testing code
     [self genAsteroids];
+    [self applyGravity];
     
 }
-
+- (void) applyGravity
+{
+    float gravityRange = 200;
+    float gravityMultiplier = 0.5ccf;
+    for (CCNode *gravityBody in gravityBodies){
+        for (CCNode* c in physicsNode.children) {
+            for (CCNode *child in c.children) {
+                CCPhysicsBody *physicsBody = child.physicsBody;
+             //   if (child.physicsBody.affectedByGravity && ccpDistance(gravityBody.position, child.position) <= gravityRange)
+               // {
+                    [physicsBody applyForce: ccpMult(ccpSub(gravityBody.position, child.position),-gravityMultiplier)];
+               // }
+            }
+            
+        }
+    }
+}
 - (void) genAsteroids
 {
     curTime = CACurrentMediaTime();
@@ -77,7 +96,7 @@
         
         float fallIntervalMin = 5 - log10f(singleton.score)/0.5;
         float fallIntervalMax = 6 - log10f(singleton.score)/1;
-        float radius = 150;
+        float radius = 300;
         
         fallInterval = fabsf(frandom_range(fallIntervalMin,fallIntervalMax));
         
@@ -100,7 +119,7 @@
     rock.position = position;
     singleton.asteroidPos = position;
    	[asteroids addObject:rock];
-
+    
 	[physicsNode addChild:rock];
 }
 
@@ -111,7 +130,7 @@
 
 - (void) handleGameOver {
     
-      //Sets score
+    //Sets score
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:singleton.score] forKey:@"Score"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     int highScore = [[[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"] intValue ];
@@ -151,7 +170,7 @@
     
     // And add it to the game scene
     [[CCDirector sharedDirector] pushScene:pauseScene withTransition:[CCTransition transitionCrossFadeWithDuration:0.5f]];
-
+    
     
     
 }
