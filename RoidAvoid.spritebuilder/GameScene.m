@@ -30,6 +30,7 @@
 
 - (void) setupScene
 {
+    self->heroMovement = MOVE_STILL;
     self.userInteractionEnabled = TRUE;
     self.multipleTouchEnabled = TRUE;
     physicsNode.debugDraw = NO;
@@ -49,15 +50,19 @@
 
 - (void) setPlanet
 {
-    earth = [CCBReader load:@"Earth"];
-    [physicsNode addChild:earth];
-    [gravityBodies addObject:earth];
+    if (earth == Nil) {
+        earth = [CCBReader load:@"Earth"];
+        [physicsNode addChild:earth];
+        [gravityBodies addObject:earth];
+    }
 }
 
 - (void) setHero
 {
-    hero = [CCBReader load:@"Hero"];
-    [physicsNode addChild:hero z:-100.0f];
+    if (hero == Nil) {
+        hero = [CCBReader load:@"Hero"];
+        [physicsNode addChild:hero z:-100.0f];
+    }
     heroAngle = HERO_INITIAL_ANGLE;
     [self updateHeroToRotation];
 }
@@ -67,7 +72,7 @@
     CGPoint position = CGPointMake(cos(heroAngle), sin(heroAngle));
     position = ccpMult(position, HERO_STAND_HEIGHT);
     hero.position = position;
-    hero.rotation = heroAngle;
+    hero.rotation = 90 - heroAngle / 3.14f * 180.0f;
 }
 
 #pragma mark Scheduler
@@ -79,7 +84,7 @@
     //some simple testing code
     [self genAsteroids];
     [self applyGravity];
-    
+    [self moveHero:dt];
 }
 
 - (void) applyGravity
@@ -208,6 +213,41 @@
     
     
 }
+
+- (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    CGPoint touchLocation = [touch locationInNode:earth];
+    if (touchLocation.x > 0.0f) {
+        self->heroMovement = MOVE_RIGHT;
+    }
+    else {
+        self->heroMovement = MOVE_LEFT;
+    }
+}
+
+- (void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    // when touches end, release the catapult
+    [self releaseMovement];
+}
+
+- (void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    // when touches are cancelled, release the catapult
+    [self releaseMovement];
+}
+
+- (void) releaseMovement
+{
+    self->heroMovement = MOVE_STILL;
+}
+
+- (void) moveHero:(CCTime) dt
+{
+    heroAngle += dt * self->heroMovement;
+    [self updateHeroToRotation];
+}
+
 
 
 @end

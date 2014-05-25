@@ -24,17 +24,17 @@
 	outliers ✓
 	collisions cause life loss ✓
 2am
-	sleep
+	sleep ✓
 4am
+	update planet graphcis ✓
+	hero movement ✓
+	update player graphics
+	blinking stars
 	high score vs. current score
-	hero movement
-	sound effects
 	craters
 6am
-	update graphics
+	sound effects
 	add particle trails
-	blinking stars
-	waving hands
 8am
 	meet
 		moon

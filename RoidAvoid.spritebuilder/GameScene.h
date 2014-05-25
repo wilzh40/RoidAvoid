@@ -13,6 +13,12 @@
 #import "Asteroid.h"
 #import "Hero.h"
 
+enum HeroMovement {
+    MOVE_RIGHT = -1,
+    MOVE_STILL,
+    MOVE_LEFT,
+};
+
 @interface GameScene : CCNode <CCPhysicsCollisionDelegate> {
     CGSize winSize;
     Singleton *singleton;
@@ -20,6 +26,7 @@
     CCNode *earth;
     CCNode *hero;
     float heroAngle;
+    enum HeroMovement heroMovement;
     
     NSMutableArray *asteroids, *gravityBodies;
     
