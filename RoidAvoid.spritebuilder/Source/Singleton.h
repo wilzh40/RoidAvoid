@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+#pragma mark Useful Macros
+
+#define frandom (float)arc4random()/UINT64_C(0x100000000)
+#define frandom_range(low,high) ((high-low)*frandom)+low
+#define random_range(low,high) (arc4random()%(high-low+1))+low
+
 @interface Singleton : NSObject {
     int _score;
     bool _firstGame;

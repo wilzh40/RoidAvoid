@@ -8,6 +8,8 @@
 
 #import "Singleton.h"
 
+
+
 @implementation Singleton
 
 + (id)sharedManager {

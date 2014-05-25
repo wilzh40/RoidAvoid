@@ -26,7 +26,10 @@
 }
 - (void) setVars
 {
-    self.scale = 0.1f;
+    float scale = frandom_range(0.3f, 0.8f);
+    self.scale = scale;
+    NSLog(@"Generated Asteroid");
+
 }
 
 @end

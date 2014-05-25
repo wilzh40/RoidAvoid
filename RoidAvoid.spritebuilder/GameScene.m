@@ -10,11 +10,6 @@
 
 
 @implementation GameScene
-#pragma mark Useful Macros
-
-#define frandom (float)arc4random()/UINT64_C(0x100000000)
-#define frandom_range(low,high) ((high-low)*frandom)+low
-#define random_range(low,high) (arc4random()%(high-low+1))+low
 
 - (void) onEnter
 {
@@ -41,6 +36,7 @@
     physicsNode.debugDraw = NO;
     if (physicsNode.collisionDelegate == Nil) physicsNode.collisionDelegate = self;
     physicsNode.sleepTimeThreshold = 10.0f;
+    physicsNode.gravity = ccp(0,0);
     singleton.firstGame = NO;
     
     asteroids = [NSMutableArray array];
@@ -77,7 +73,7 @@
         
         float fallIntervalMin = 5 - log10f(singleton.score)/0.5;
         float fallIntervalMax = 6 - log10f(singleton.score)/1;
-        float radius = 100;
+        float radius = 50;
         
         fallInterval = fabsf(frandom_range(fallIntervalMin,fallIntervalMax));
         
@@ -86,7 +82,7 @@
         nextFallTime = fallInterval + curTime;
         //singleton.asteroidX = frandom_range(-winSize.width/4, winSize.width/4);
         //loat randomY = frandom_range(winSize.height, winSize.height + logf(_score));
-        CGPoint startingPosition = ccp(CCRANDOM_ON_UNIT_CIRCLE().x*radius,CCRANDOM_IN_UNIT_CIRCLE().x*radius);
+        CGPoint startingPosition = ccp(CCRANDOM_ON_UNIT_CIRCLE().x*radius+winSize.width/2,CCRANDOM_IN_UNIT_CIRCLE().x*radius+winSize.height/2);
         
         [self genAsteroid:startingPosition];
         
@@ -97,16 +93,15 @@
 
 {
     
-	//CCNode *rock = [CCBReader load:[NSString stringWithFormat:@"asteroid_%i",1]];
-    CCNode *rock = [CCBReader load:@"asteroid_1"];
+	CCNode *rock = [CCBReader load:[NSString stringWithFormat:@"asteroid_%i",random_range(1, 5)]];
+    //CCNode *rock = [CCBReader load:@"asteroid_1"];
     
     rock.position = position;
     
    	[asteroids addObject:rock];
     
 	[physicsNode addChild:rock];
-    NSLog(@"Generated Asteroid");
-}
+  }
 
 
 #pragma mark Collision
