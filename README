@@ -28,15 +28,13 @@
 4am
 	update planet graphcis ✓
 	hero movement ✓
+	craters ✓
+6am
+	sound effects ✓
+	high score vs. current score ✓
+	adjust difficulty ✓
+8am
 	update player graphics
 	blinking stars
-	high score vs. current score
-	craters
-6am
-	sound effects
 	add particle trails
-8am
-	meet
-		moon
-	adjust difficulty
 	play testing

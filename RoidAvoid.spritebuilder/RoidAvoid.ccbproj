@@ -134,6 +134,34 @@
 			<key>isSmartSpriteSheet</key>
 			<true/>
 		</dict>
+		<key>Sprite/1.png</key>
+		<dict>
+			<key>isDirty</key>
+			<true/>
+			<key>scaleFrom</key>
+			<integer>1</integer>
+		</dict>
+		<key>Sprite/2.png</key>
+		<dict>
+			<key>isDirty</key>
+			<true/>
+			<key>scaleFrom</key>
+			<integer>1</integer>
+		</dict>
+		<key>Sprite/3.png</key>
+		<dict>
+			<key>isDirty</key>
+			<true/>
+			<key>scaleFrom</key>
+			<integer>1</integer>
+		</dict>
+		<key>Sprite/4.png</key>
+		<dict>
+			<key>isDirty</key>
+			<true/>
+			<key>scaleFrom</key>
+			<integer>1</integer>
+		</dict>
 		<key>Sprites</key>
 		<dict/>
 		<key>ccbResources</key>

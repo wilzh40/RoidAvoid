@@ -45,6 +45,8 @@
 #define HERO_MOVE_SPEED (2.0f)
 #define HERO_STAND_HEIGHT (58.0f)
 
+#define STARS_COUNT (100)
+
 @interface Singleton : NSObject {
     int _score;
     bool _firstGame;

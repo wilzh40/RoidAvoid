@@ -27,6 +27,7 @@ enum HeroMovement {
     CCNode *hero;
     float heroAngle;
     enum HeroMovement heroMovement;
+    CCNode *bgColor;
     
     NSMutableArray *asteroids, *gravityBodies;
     

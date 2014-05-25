@@ -373,7 +373,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.5</real>
+							<real>0.44999998807907104</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -420,7 +420,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>ccbResources/avenger.ttf</string>
+						<string>ccbResources/Arkitech Medium.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -578,7 +578,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.40000000596046448</real>
+							<real>0.375</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -625,7 +625,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>ccbResources/avenger.ttf</string>
+						<string>ccbResources/Arkitech Medium.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>

@@ -44,6 +44,7 @@
     [self displayHighScore];
     [self setPlanet];
     [self setHero];
+    [self setStars];
     NSLog(@"Setup Scene");
     
 }
@@ -70,6 +71,22 @@
     }
     heroAngle = HERO_INITIAL_ANGLE;
     [self updateHeroToRotation];
+}
+
+- (void) setStars
+{
+    CCPositionType type;
+    type.xUnit = CCPositionUnitNormalized;
+    type.yUnit = CCPositionUnitNormalized;
+
+    for (int i = 0; i < STARS_COUNT; i++) {
+        CCNode *star = [CCBReader load:@"Star"];
+        CGPoint position = CGPointMake(frandom_range(0.0f, 1.0f), frandom_range(0.0f, 1.0f));
+        star.positionType = type;
+        star.position = position;
+        [self addChild:star z:-1.0f];
+    }
+    bgColor.zOrder = -1001.0f;
 }
 
 - (void) updateHeroToRotation
@@ -125,7 +142,7 @@
         
         float fallIntervalMin = 3.8 - log10f(singleton.score);
         if (fallIntervalMin < 0)
-            fallIntervalMin = 0.1;
+            fallIntervalMin = 0.15;
         float fallIntervalMax = fallIntervalMin * 1.5;
         float radius = ASTEROID_SPAWN_RADIUS;
         
