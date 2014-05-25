@@ -124,9 +124,11 @@
     if (curTime > nextFallTime) {
         //Sets Next Fall time and interval, procedurally decrease by _score
         
-        float fallIntervalMin = 5 - log10f(singleton.score)/0.5;
-        float fallIntervalMax = 6 - log10f(singleton.score)/1;
-        float radius = 300;
+        float fallIntervalMin = 5 - log10f(singleton.score)*2;
+        if (fallIntervalMin < 0)
+            fallIntervalMin = 0.1;
+        float fallIntervalMax = fallIntervalMin * 1.5;
+        float radius = ASTEROID_SPAWN_RADIUS;
         
         fallInterval = fabsf(frandom_range(fallIntervalMin,fallIntervalMax));
         
