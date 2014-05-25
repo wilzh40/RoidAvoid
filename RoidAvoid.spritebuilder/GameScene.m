@@ -50,11 +50,10 @@
 
 - (void) setPlanet
 {
-    if (earth == Nil) {
         earth = [CCBReader load:@"Earth"];
         [physicsNode addChild:earth];
         [gravityBodies addObject:earth];
-    }
+    
 }
 
 - (void) setHero
