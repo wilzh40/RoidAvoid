@@ -18,7 +18,7 @@
 
 - (void) setVars
 {
-    self.scale = 1.5f;
+    self.scale = 0.4f;
     
     
     CCPhysicsBody *physicsBody = self.physicsBody;

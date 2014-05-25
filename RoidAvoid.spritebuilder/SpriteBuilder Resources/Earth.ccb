@@ -41,7 +41,7 @@
 			<key>bodyShape</key>
 			<integer>1</integer>
 			<key>cornerRadius</key>
-			<real>32.80078125</real>
+			<real>126.5</real>
 			<key>density</key>
 			<real>1</real>
 			<key>dynamic</key>
@@ -53,8 +53,8 @@
 			<key>points</key>
 			<array>
 				<array>
-					<real>37.5</real>
-					<real>37.5</real>
+					<real>126.5</real>
+					<real>126.5</real>
 				</array>
 			</array>
 		</dict>
@@ -114,7 +114,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>Sprite/Earth.png</string>
+					<string>Sprite/neptune.png</string>
 				</array>
 			</dict>
 			<dict>
@@ -131,6 +131,8 @@
 				</array>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
