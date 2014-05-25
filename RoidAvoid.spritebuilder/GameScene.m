@@ -69,10 +69,15 @@
 
 - (void) updateHeroToRotation
 {
-    CGPoint position = CGPointMake(cos(heroAngle), sin(heroAngle));
-    position = ccpMult(position, HERO_STAND_HEIGHT);
-    hero.position = position;
-    hero.rotation = 90 - heroAngle / 3.14f * 180.0f;
+    [self positionNodeOnEarth:hero atAngle:heroAngle atHeight:HERO_STAND_HEIGHT];
+}
+
+- (void) positionNodeOnEarth:(CCNode *)node atAngle:(float)angle atHeight:(float)height
+{
+    CGPoint position = CGPointMake(cos(angle), sin(angle));
+    position = ccpMult(position, height);
+    node.position = position;
+    node.rotation = 90 - angle / 3.14f * 180.0f;
 }
 
 #pragma mark Scheduler
