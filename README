@@ -1,0 +1,42 @@
+2pm
+	created Git repo ✓
+	installed SpriteBuilder ✓
+	created skeleton ✓
+	created main menu ✓
+	created sound options ✓
+4pm
+	graphics assets ✓
+	create class heirarchy ✓
+	1 workshop ✓
+6pm
+	render score ✓
+	dinner ✓
+8pm
+	planet on screen ✓
+	generate asteroids w/linear velocity ✓
+10pm
+	asteroid physics ✓
+	asteroid gravity ✓
+12am
+	asteroid initial angles ✓
+	collision masks ✓
+	game over score ✓
+	outliers ✓
+	collisions cause life loss ✓
+2am
+	sleep
+4am
+	high score vs. current score
+	hero movement
+	sound effects
+	craters
+6am
+	update graphics
+	add particle trails
+	blinking stars
+	waving hands
+8am
+	meet
+		moon
+	adjust difficulty
+	play testing
