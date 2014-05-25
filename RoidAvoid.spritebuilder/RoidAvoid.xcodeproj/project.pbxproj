@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		775498441931DF8A00787D1A /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 775498431931DF8A00787D1A /* GameOverScene.m */; };
 		77603954193146D20054E6FD /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77603953193146D20054E6FD /* Singleton.m */; };
 		7760395A19314A700054E6FD /* OptionScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760395919314A700054E6FD /* OptionScene.m */; };
 		7760395D19314A900054E6FD /* CreditsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760395C19314A900054E6FD /* CreditsScene.m */; };
@@ -63,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		775498421931DF8A00787D1A /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
+		775498431931DF8A00787D1A /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScene.m; sourceTree = "<group>"; };
 		77603952193146D20054E6FD /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Singleton.h; path = Source/Singleton.h; sourceTree = "<group>"; };
 		77603953193146D20054E6FD /* Singleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Singleton.m; path = Source/Singleton.m; sourceTree = "<group>"; };
 		7760395819314A700054E6FD /* OptionScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionScene.h; sourceTree = "<group>"; };
@@ -156,6 +159,8 @@
 				7760395C19314A900054E6FD /* CreditsScene.m */,
 				7760395E19314DE80054E6FD /* GameScene.h */,
 				7760395F19314DE80054E6FD /* GameScene.m */,
+				775498421931DF8A00787D1A /* GameOverScene.h */,
+				775498431931DF8A00787D1A /* GameOverScene.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -391,6 +396,7 @@
 			files = (
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				7760395A19314A700054E6FD /* OptionScene.m in Sources */,
+				775498441931DF8A00787D1A /* GameOverScene.m in Sources */,
 				77603954193146D20054E6FD /* Singleton.m in Sources */,
 				7760396019314DE80054E6FD /* GameScene.m in Sources */,
 				77603973193153B40054E6FD /* Asteroid.m in Sources */,

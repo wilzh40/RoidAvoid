@@ -146,6 +146,11 @@
     [physicsNode removeChild:asteroid cleanup:YES];
 }
 
+- (void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair hero:(CCNode *)hero asteroid:(CCNode *)asteroid
+{
+    NSLog(@"GameOver");
+    [self handleGameOver];
+}
 #pragma mark Transition
 
 - (void) handleGameOver {

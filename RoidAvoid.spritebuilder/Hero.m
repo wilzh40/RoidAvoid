@@ -24,12 +24,12 @@
     CCPhysicsBody *physicsBody = self.physicsBody;
     
     // This is used to pick which collision delegate method to call, see GameScene.m for more info.
-	physicsBody.collisionType = @"asteroid";
+	physicsBody.collisionType = @"hero";
 	// This sets up simple collision rules.
 	// First you list the categories (strings) that the object belongs to.
-	physicsBody.collisionCategories = @[@"asteroid"];
+	physicsBody.collisionCategories = @[@"hero"];
 	// Then you list which categories its allowed to collide with.
-	physicsBody.collisionMask = @[@"hero", @"planet",@"boundary"];
+	physicsBody.collisionMask = @[@"hero", @"planet",@"boundary",@"asteroid"];
     
 
 }
