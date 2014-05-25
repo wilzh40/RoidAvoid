@@ -41,11 +41,18 @@
     singleton.score = 0;
     asteroids = [NSMutableArray array];
     gravityBodies = [NSMutableArray array];
-    
+
+    [self displayHighScore];
     [self setPlanet];
     [self setHero];
     NSLog(@"Setup Scene");
     
+}
+
+- (void) displayHighScore
+{
+    int highScore = [[[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"] intValue ];
+    [highScoreLabel setString:[NSString stringWithFormat:@"%d",highScore]];
 }
 
 - (void) setPlanet

@@ -31,6 +31,7 @@ enum HeroMovement {
     NSMutableArray *asteroids, *gravityBodies;
     
     CCLabelTTF *scoreLabel;
+    CCLabelTTF *highScoreLabel;
     
     
     
