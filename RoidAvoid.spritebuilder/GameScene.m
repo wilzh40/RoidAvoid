@@ -164,7 +164,7 @@
     
     
     [physicsNode addChild:crater z:10];
-    [self positionNodeOnEarth:crater atAngle:ccpToAngle(asteroid.position) atHeight:40.0f];
+    [self positionNodeOnEarth:crater atAngle:ccpToAngle(asteroid.position) atHeight:CRATER_STAND_HEIGHT];
     
     CCActionFiniteTime *fadeOut = [CCActionFadeOut actionWithDuration:1.5f];
     CCActionRemove *action = [CCActionRemove action];
