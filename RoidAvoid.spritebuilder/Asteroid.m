@@ -22,33 +22,19 @@
 
 - (void) setVars
 {
-        float convConstant = 3.141592653589/180;
-        float angleOffsetRange = 20;
-        float angleOffset = 0;
-        float scale = frandom_range(0.1f, 0.2f);
-        self.scale = scale;
-        CGPoint asteroidPos = singleton.asteroidPos;
-        
-        float angle = (ccpToAngle(asteroidPos))/convConstant;
-        
-        
-        while (fabsf(angleOffset) < angleOffset/2) {
-        angleOffset = frandom_range(-angleOffsetRange, angleOffsetRange);
-        }
-        float newAngle =+ angleOffset;
-        
-        float speed = frandom_range(0.5f,0.7f);
-        CCPhysicsBody *physicsBody = self.physicsBody;
-        [physicsBody setVelocity:ccpMult(ccp(cosf(newAngle),sinf(newAngle)), -speed)];
-        
-    
-        
+    float scale = frandom_range(ASTEROID_SIZE_MIN, ASTEROID_SIZE_MAX);
+    self.scale = scale;
 
-        
-        
-    
+    float speed = frandom_range(ASTEROID_SPEED_MIN, ASTEROID_SPEED_MAX);
+    float toEarth = -ccpToAngle(singleton.asteroidPos);
+    float randomFactor = frandom_range(ASTEROID_ANGLE_MIN, ASTEROID_ANGLE_MAX) * random() > 0 ? 1 : -1;
+    float angle = toEarth + randomFactor;
+    float angularVelocity = frandom_range(ASTEROID_ANGLEVELOCITY_MIN, ASTEROID_ANGLEVELOCITY_MAX);
 
-    NSLog(@"%f",angle);
+    [self.physicsBody setVelocity:ccpMult(ccp(cosf(angle), sinf(angle)), speed)];
+    [self.physicsBody setAngularVelocity:angularVelocity];
+
+    NSLog(@"Asteroid created with angle %f", angle);
 }
 
 @end

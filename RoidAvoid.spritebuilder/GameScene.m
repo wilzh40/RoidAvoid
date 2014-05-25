@@ -8,10 +8,6 @@
 
 #import "GameScene.h"
 
-#define HERO_STAND_HEIGHT (58.0f)
-#define HERO_INITIAL_ANGLE (3.14/2)
-
-
 @implementation GameScene
 
 - (void) onEnter
@@ -89,7 +85,7 @@
 - (void) applyGravity
 {
 
-    float gravityMultiplier = 1000000000.0f;
+    float gravityMultiplier = GRAVITY_CONSTANT;
     for (CCNode *gravityBody in gravityBodies) {
         //NSLog(@"gravityBody x:%f y:%f", gravityBody.position.x, gravityBody.position.y);
         for (CCNode* child in physicsNode.children) {
