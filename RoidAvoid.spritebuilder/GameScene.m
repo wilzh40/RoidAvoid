@@ -82,8 +82,8 @@
         nextFallTime = fallInterval + curTime;
         //singleton.asteroidX = frandom_range(-winSize.width/4, winSize.width/4);
         //loat randomY = frandom_range(winSize.height, winSize.height + logf(_score));
-        CGPoint startingPosition = ccp(CCRANDOM_ON_UNIT_CIRCLE().x*radius+winSize.width/2,CCRANDOM_IN_UNIT_CIRCLE().x*radius+winSize.height/2);
-        
+//        CGPoint startingPosition = ccp(CCRANDOM_ON_UNIT_CIRCLE().x*radius+winSize.width/2,CCRANDOM_IN_UNIT_CIRCLE().x*radius+winSize.height/2);
+       CGPoint startingPosition = ccpMult(CCRANDOM_ON_UNIT_CIRCLE(), radius);
         [self genAsteroid:startingPosition];
         
         
