@@ -144,6 +144,12 @@
 
 #pragma mark Collision
 
+- (void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair planet:(CCNode *)planet asteroid:(CCNode *)asteroid
+{
+    [asteroids removeObject:asteroid];
+    [physicsNode removeChild:asteroid cleanup:YES];
+}
+
 #pragma mark Transition
 
 - (void) handleGameOver {
