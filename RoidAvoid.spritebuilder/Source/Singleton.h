@@ -22,4 +22,5 @@
 
 @property (readwrite,nonatomic) int score;
 @property (readwrite,nonatomic) bool firstGame;
+@property (readwrite,nonatomic) CGPoint asteroidPos;
 @end

@@ -116,7 +116,7 @@
     CCNode *rock = [CCBReader load:[NSString stringWithFormat:@"asteroid_%i",variation]];
 
     rock.position = position;
-
+    singleton.asteroidPos = position;
    	[asteroids addObject:rock];
     
 	[physicsNode addChild:rock];

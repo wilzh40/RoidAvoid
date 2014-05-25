@@ -28,7 +28,16 @@
 {
     for (CCNode *children in self.children) {
     float scale = frandom_range(0.1f, 0.2f);
-    children.scale = scale;
+        children.scale = scale;
+        CGPoint asteroidPos = singleton.asteroidPos;
+        
+        float angle = ccpToAngle(asteroidPos);
+        float speed = frandom_range(0.5f,0.7f);
+        CCPhysicsBody *physicsBody = children.physicsBody;
+        [physicsBody setVelocity:ccpMult(asteroidPos, -speed)];
+        NSLog(@"%f",angle);
+        
+        
     }
 
 }
