@@ -11,4 +11,17 @@
 
 @implementation Hero
 
+- (void) onEnter
+{
+    [self setVars];
+	[super onEnter];
+}
+
+- (void) setVars
+{
+    for (CCNode *child in self.children) {
+        child.scale = 2.0f;
+    }
+}
+
 @end

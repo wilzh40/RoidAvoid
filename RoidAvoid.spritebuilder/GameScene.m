@@ -8,6 +8,9 @@
 
 #import "GameScene.h"
 
+#define HERO_STAND_HEIGHT (58.0f)
+#define HERO_INITIAL_ANGLE (3.14/2)
+
 
 @implementation GameScene
 
@@ -42,6 +45,7 @@
     asteroids = [NSMutableArray array];
 
     [self setPlanet];
+    [self setHero];
     NSLog(@"Setup Scene");
     
 }
@@ -54,7 +58,20 @@
 
 - (void) setHero
 {
-    
+    hero = [CCBReader load:@"Hero"];
+    [physicsNode addChild:hero z:-100.0f];
+    heroAngle = HERO_INITIAL_ANGLE;
+    [self updateHeroToRotation];
+}
+
+- (void) updateHeroToRotation
+{
+    CGPoint position = CGPointMake(cos(heroAngle), sin(heroAngle));
+    position = ccpMult(position, HERO_STAND_HEIGHT);
+    for (CCNode *child in hero.children) {
+        child.position = position;
+        child.rotation = heroAngle;
+    }
 }
 
 #pragma mark Scheduler

@@ -18,6 +18,8 @@
     Singleton *singleton;
     CCPhysicsNode *physicsNode;
     CCNode *earth;
+    CCNode *hero;
+    float heroAngle;
     
     NSMutableArray *asteroids;
     
