@@ -110,8 +110,8 @@
     };
 
     int variation = random_range(1, 5);
-    position.x -= widths[variation]/8;
-    position.y -= heights[variation]/8;
+//    position.x -= widths[variation]/8;
+//    position.y -= heights[variation]/8;
 
     CCNode *rock = [CCBReader load:[NSString stringWithFormat:@"asteroid_%i",variation]];
 

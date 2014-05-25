@@ -26,9 +26,10 @@
 }
 - (void) setVars
 {
+    for (CCNode *children in self.children) {
     float scale = frandom_range(0.1f, 0.2f);
-    self.scale = scale;
-    NSLog(@"Generated Asteroid");
+    children.scale = scale;
+    }
 
 }
 
