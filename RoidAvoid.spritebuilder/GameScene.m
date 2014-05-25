@@ -22,7 +22,6 @@
     if  ((singleton.firstGame == YES)) {
         [self setupScene];
     }
-    [self setupScene];
     
 }
 
