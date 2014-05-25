@@ -73,7 +73,7 @@
         
         float fallIntervalMin = 5 - log10f(singleton.score)/0.5;
         float fallIntervalMax = 6 - log10f(singleton.score)/1;
-        float radius = 50;
+        float radius = 150;
         
         fallInterval = fabsf(frandom_range(fallIntervalMin,fallIntervalMax));
         
@@ -83,7 +83,8 @@
         //singleton.asteroidX = frandom_range(-winSize.width/4, winSize.width/4);
         //loat randomY = frandom_range(winSize.height, winSize.height + logf(_score));
 //        CGPoint startingPosition = ccp(CCRANDOM_ON_UNIT_CIRCLE().x*radius+winSize.width/2,CCRANDOM_IN_UNIT_CIRCLE().x*radius+winSize.height/2);
-       CGPoint startingPosition = ccpMult(CCRANDOM_ON_UNIT_CIRCLE(), radius);
+       CGPoint circle = ccpMult(CCRANDOM_ON_UNIT_CIRCLE(), radius);
+        CGPoint startingPosition = ccp(circle.x,circle.y);
         [self genAsteroid:startingPosition];
         
         
