@@ -222,7 +222,7 @@
 - (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     CGPoint touchLocation = [touch locationInNode:earth];
-    if (touchLocation.x > 0.0f) {
+    if (touchLocation.x > earth.contentSize.width / 2.0f) {
         self->heroMovement = MOVE_RIGHT;
     }
     else {
