@@ -70,10 +70,8 @@
 {
     CGPoint position = CGPointMake(cos(heroAngle), sin(heroAngle));
     position = ccpMult(position, HERO_STAND_HEIGHT);
-    for (CCNode *child in hero.children) {
-        child.position = position;
-        child.rotation = heroAngle;
-    }
+    hero.position = position;
+    hero.rotation = heroAngle;
 }
 
 #pragma mark Scheduler
@@ -91,7 +89,7 @@
 - (void) applyGravity
 {
     float gravityRange = 200;
-    float gravityMultiplier = 0.5ccf;
+    float gravityMultiplier = 0.5f;
     for (CCNode *gravityBody in gravityBodies){
         for (CCNode* c in physicsNode.children) {
             for (CCNode *child in c.children) {
