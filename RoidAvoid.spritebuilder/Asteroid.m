@@ -7,8 +7,18 @@
 //
 
 #import "Asteroid.h"
-
+#import "Singleton.h"
 
 @implementation Asteroid
+
+-(void)onEnter
+{
+    
+    
+    singleton = [Singleton sharedManager];
+    winSize = [[CCDirector sharedDirector]viewSize];
+	
+	[super onEnter];
+}
 
 @end

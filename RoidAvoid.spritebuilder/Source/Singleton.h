@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Singleton : NSObject
+@interface Singleton : NSObject {
+    int _score;
+    bool _firstGame;
+}
++ (id)sharedManager;
 
+@property (readwrite,nonatomic) int score;
+@property (readwrite,nonatomic) bool firstGame;
 @end

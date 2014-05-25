@@ -8,9 +8,24 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "Singleton.h"
 
-@interface GameScene : CCNode {
+#import "Asteroid.h"
+#import "Hero.h"
+
+@interface GameScene : CCNode <CCPhysicsCollisionDelegate> {
+    CGSize winSize;
+    Singleton *singleton;
+    CCPhysicsNode *physicsNode;
     
+    NSMutableArray *asteroids;
+    
+    CCLabelTTF *scoreLabel;
+    
+    
+    
+    float timer, nextFallTime,fallInterval,qForFall,currentFallType,asteroidSize,asteroidPosition,fallingSpeed;
+    double curTime;
 }
 
 @end
