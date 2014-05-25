@@ -91,15 +91,12 @@
     float gravityRange = 200;
     float gravityMultiplier = 0.5f;
     for (CCNode *gravityBody in gravityBodies){
-        for (CCNode* c in physicsNode.children) {
-            for (CCNode *child in c.children) {
-                CCPhysicsBody *physicsBody = child.physicsBody;
-             //   if (child.physicsBody.affectedByGravity && ccpDistance(gravityBody.position, child.position) <= gravityRange)
-               // {
-                    [physicsBody applyForce: ccpMult(ccpSub(gravityBody.position, child.position),-gravityMultiplier)];
-               // }
-            }
-            
+        for (CCNode* child in physicsNode.children) {
+            CCPhysicsBody *physicsBody = child.physicsBody;
+            //if (child.physicsBody.affectedByGravity && ccpDistance(gravityBody.position, child.position) <= gravityRange)
+            //{
+                [physicsBody applyForce: ccpMult(ccpSub(gravityBody.position, child.position),-gravityMultiplier)];
+           //}
         }
     }
 }

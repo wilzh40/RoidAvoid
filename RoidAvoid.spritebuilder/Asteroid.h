@@ -10,7 +10,7 @@
 #import "cocos2d.h"
 #import "Singleton.h"
 
-@interface Asteroid : CCNode {
+@interface Asteroid : CCSprite {
     CGSize winSize;
     Singleton *singleton;
 }
