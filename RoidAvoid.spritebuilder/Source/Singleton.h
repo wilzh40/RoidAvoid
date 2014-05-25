@@ -43,7 +43,7 @@
 
 #define HERO_INITIAL_ANGLE (3.14/2)
 #define HERO_MOVE_SPEED (2.0f)
-#define HERO_STAND_HEIGHT (58.0f)
+#define HERO_STAND_HEIGHT (65.0f)
 
 #define STARS_COUNT (100)
 

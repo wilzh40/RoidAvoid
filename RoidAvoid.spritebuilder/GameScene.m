@@ -263,9 +263,11 @@
     CGPoint touchLocation = [touch locationInNode:earth];
     if (touchLocation.x > earth.contentSize.width / 2.0f) {
         self->heroMovement = MOVE_RIGHT;
+        ((CCSprite *)hero).flipX = TRUE;
     }
     else {
         self->heroMovement = MOVE_LEFT;
+        ((CCSprite *)hero).flipX = FALSE;
     }
 }
 
