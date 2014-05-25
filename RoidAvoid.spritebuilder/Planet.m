@@ -18,10 +18,7 @@
 
 - (void) setVars
 {
-    for (CCNode *child in self.children) {
-        child.scale = 1.5f;
-    }
-    
+    self.scale = 1.5f;
 }
 
 @end

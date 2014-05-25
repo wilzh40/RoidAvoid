@@ -70,10 +70,8 @@
 {
     CGPoint position = CGPointMake(cos(heroAngle), sin(heroAngle));
     position = ccpMult(position, HERO_STAND_HEIGHT);
-    for (CCNode *child in hero.children) {
-        child.position = position;
-        child.rotation = heroAngle;
-    }
+    hero.position = position;
+    hero.rotation = heroAngle;
 }
 
 #pragma mark Scheduler
@@ -82,29 +80,32 @@
     singleton.score++;
     [scoreLabel setString:[NSString stringWithFormat:@"%d",singleton.score]];
     
-    
     //some simple testing code
     [self genAsteroids];
     [self applyGravity];
     
 }
+
 - (void) applyGravity
 {
-    float gravityRange = 200;
-    float gravityMultiplier = 0.5f;
-    for (CCNode *gravityBody in gravityBodies){
-        for (CCNode* c in physicsNode.children) {
-            for (CCNode *child in c.children) {
-                CCPhysicsBody *physicsBody = child.physicsBody;
-             //   if (child.physicsBody.affectedByGravity && ccpDistance(gravityBody.position, child.position) <= gravityRange)
-               // {
-                    [physicsBody applyForce: ccpMult(ccpSub(gravityBody.position, child.position),-gravityMultiplier)];
-               // }
+
+    float gravityMultiplier = 1000000000.0f;
+    for (CCNode *gravityBody in gravityBodies) {
+        //NSLog(@"gravityBody x:%f y:%f", gravityBody.position.x, gravityBody.position.y);
+        for (CCNode* child in physicsNode.children) {
+            CCPhysicsBody *physicsBody = child.physicsBody;
+            if (!physicsBody.affectedByGravity) {
+                continue;
             }
-            
+            CGPoint distanceVector = ccpSub(gravityBody.position, child.position);
+            float distance = powf(distanceVector.x, 2) + powf(distanceVector.y, 2);
+            float angle = atan2f(distanceVector.y, distanceVector.x);
+            //NSLog(@"affectedByGravity x:%f y:%f α:%f r:%f", child.position.x, child.position.y, angle, distance);
+            [physicsBody applyForce: ccpMult(distanceVector, gravityMultiplier / powf(distance, 2))];
         }
     }
 }
+
 - (void) genAsteroids
 {
     curTime = CACurrentMediaTime();
