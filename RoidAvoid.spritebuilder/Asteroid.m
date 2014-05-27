@@ -67,9 +67,15 @@
     
     //Holy shit this code is so fucking beautiful -Wilson
     
-    self.scale = scale;
+    [self doScale:scale];
     [self.physicsBody setVelocity:ccpMult(ccp(cosf(angle), sinf(angle)), speed)];
     [self.physicsBody setAngularVelocity:angularVelocity];
+}
+
+- (void) doScale:(float)scale
+{
+    self.scale = scale;
+    self.physicsBody.mass = scale;
 }
 
 @end

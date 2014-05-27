@@ -124,11 +124,12 @@
         //NSLog(@"gravityBody x:%f y:%f", gravityBody.position.x, gravityBody.position.y);
         for (Asteroid* roid in asteroids) {
             CCPhysicsBody *physicsBody = roid.physicsBody;
+            CGFloat mass = physicsBody.mass;
             CGPoint distanceVector = ccpSub(gravityBody.position, roid.position);
             float distance = powf(distanceVector.x, 2) + powf(distanceVector.y, 2);
             //float angle = atan2f(distanceVector.y, distanceVector.x);
             //NSLog(@"affectedByGravity x:%f y:%f α:%f r:%f", roid.position.x, roid.position.y, angle, distance);
-            [physicsBody applyForce: ccpMult(distanceVector, dt * gravityMultiplier / powf(distance, 2))];
+            [physicsBody applyForce: ccpMult(distanceVector, dt * mass * gravityMultiplier / powf(distance, 2))];
         }
     }
 }
