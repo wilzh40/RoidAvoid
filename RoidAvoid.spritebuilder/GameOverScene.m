@@ -10,15 +10,16 @@
 #import "Singleton.h"
 
 @implementation GameOverScene
+
 - (void) onEnter
 {
     singleton = [Singleton sharedManager];
     [self setScore];
     [super onEnter];
 }
+
 - (void) setScore
 {
-    
     int score = [[[NSUserDefaults standardUserDefaults] objectForKey:@"Score"] intValue ];
     NSLog(@"SCORE:%i",score);
     [scoreLabel setString:[NSString stringWithFormat:@"%i",score]];
@@ -36,8 +37,8 @@
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:@"HighScoreBool"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    
 }
+
 - (void) handleQuitGame
 {
     CCScene *mainMenu = [CCBReader loadAsScene:@"MainScene"];
@@ -45,8 +46,8 @@
     [[CCDirector sharedDirector]replaceScene:mainMenu withTransition:[CCTransition transitionFadeWithDuration:0.5f]];
     
     singleton.firstGame = YES;
-    
 }
+
 - (void) handleRestartGame
 {
     CCScene *gameScene = [CCBReader loadAsScene:@"GameScene"];

@@ -20,7 +20,6 @@
 {
     self.scale = 0.4f;
     
-    
     CCPhysicsBody *physicsBody = self.physicsBody;
     
     // This is used to pick which collision delegate method to call, see GameScene.m for more info.
@@ -30,9 +29,6 @@
 	physicsBody.collisionCategories = @[@"planet"];
 	// Then you list which categories its allowed to collide with.
 	physicsBody.collisionMask = @[@"hero", @"asteroid",@"boundary"];
-    
-
 }
-
 
 @end

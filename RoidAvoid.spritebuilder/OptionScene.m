@@ -13,7 +13,6 @@
 
 - (void) onEnter
 {
-    
     backgroundVolume.sliderValue = [[[NSUserDefaults standardUserDefaults] objectForKey:@"BGVolume"]floatValue];
     effectsVolume.sliderValue = [[[NSUserDefaults standardUserDefaults] objectForKey:@"FXVolume"]floatValue];
     [super onEnter];
@@ -22,13 +21,10 @@
 - (void) pressedBack
 {
     [[CCDirector sharedDirector]popSceneWithTransition:[CCTransition transitionFadeWithDuration:0.5f]];
-
-    
 }
 
 - (void)pressedResetHighScore
 {
-    
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:@"HighScore"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     //Kills the highscore
@@ -36,7 +32,6 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSLog(@"Reset High Score");
-    
 }
 
 - (void)valueChanged1:(CCSlider *)sender
@@ -56,6 +51,5 @@
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:sender.sliderValue] forKey:@"BGVolume"];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
-
 
 @end

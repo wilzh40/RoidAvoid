@@ -29,9 +29,7 @@
 	// First you list the categories (strings) that the object belongs to.
 	physicsBody.collisionCategories = @[@"hero"];
 	// Then you list which categories its allowed to collide with.
-	physicsBody.collisionMask = @[@"hero", @"planet",@"boundary",@"asteroid"];
-    
-
+	physicsBody.collisionMask = @[@"hero", @"planet", @"boundary", @"asteroid"];
 }
 
 @end

@@ -12,7 +12,6 @@
 
 - (void) onEnter
 {
-    
     singleton = [Singleton sharedManager];
     winSize = [[CCDirector sharedDirector]viewSize];
 	
@@ -23,20 +22,18 @@
     if  ((singleton.firstGame == YES)) {
         [self setupScene];
     }
-    
 }
 
 #pragma mark Setup
 
 - (void) setupScene
 {
-    
-    
     self->heroMovement = MOVE_STILL;
     self.userInteractionEnabled = TRUE;
     self.multipleTouchEnabled = TRUE;
     physicsNode.debugDraw = NO;
-    if (physicsNode.collisionDelegate == Nil) physicsNode.collisionDelegate = self;
+    if (physicsNode.collisionDelegate == Nil)
+        physicsNode.collisionDelegate = self;
     
     physicsNode.sleepTimeThreshold = 10.0f;
     physicsNode.gravity = ccp(0,0);
@@ -63,7 +60,7 @@
 
 - (void) setPlanet
 {
-        earth = [CCBReader load:@"Earth"];
+        earth = (Planet *)[CCBReader load:@"Earth"];
         [physicsNode addChild:earth];
         [gravityBodies addObject:earth];
     
@@ -72,7 +69,7 @@
 - (void) setHero
 {
     if (hero == Nil) {
-        hero = [CCBReader load:@"Hero"];
+        hero = (Hero *)[CCBReader load:@"Hero"];
         [physicsNode addChild:hero z:-100.0f];
     }
     heroAngle = HERO_INITIAL_ANGLE;
@@ -81,9 +78,6 @@
 
 - (void) setStars
 {
-    
-    
-    
     CCPositionType type;
     type.xUnit = CCPositionUnitNormalized;
     type.yUnit = CCPositionUnitNormalized;
@@ -125,7 +119,6 @@
 
 - (void) applyGravity
 {
-
     float gravityMultiplier = GRAVITY_CONSTANT;
     for (CCNode *gravityBody in gravityBodies) {
         //NSLog(@"gravityBody x:%f y:%f", gravityBody.position.x, gravityBody.position.y);
@@ -172,12 +165,11 @@
 - (void) genAsteroid:(CGPoint)position
 {
     int variation = random_range(1, 5);
-    CCNode *rock = [CCBReader load:[NSString stringWithFormat:@"asteroid_%i",variation]];
-    rock.position = position;
-    singleton.asteroidPos = position;
-   	[asteroids addObject:rock];
+    Asteroid *roid = (Asteroid *)[CCBReader load:[NSString stringWithFormat:@"asteroid_%i",variation]];
+    roid.position = position;
+   	[asteroids addObject:roid];
     
-	[physicsNode addChild:rock];
+	[physicsNode addChild:roid];
 }
 
 
@@ -185,8 +177,6 @@
 
 - (void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair planet:(CCNode *)planet asteroid:(CCNode *)asteroid
 {
-  
-    
     //Add Crater
     
     CCNode *crater = [CCBReader load:@"Crater"];
@@ -210,7 +200,6 @@
     
     [asteroids removeObject:asteroid];
     [physicsNode removeChild:asteroid cleanup:YES];
-    
 }
 
 - (void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair hero:(CCNode *)hero asteroid:(CCNode *)asteroid
@@ -218,10 +207,11 @@
     NSLog(@"GameOver");
     [self handleGameOver];
 }
+
 #pragma mark Transition
 
-- (void) handleGameOver {
-    
+- (void) handleGameOver
+{
     //Sets score
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:singleton.score] forKey:@"Score"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -243,7 +233,6 @@
     [[CCDirector sharedDirector]replaceScene:GameOverScene withTransition:[CCTransition transitionCrossFadeWithDuration:0.5f]];
     
     singleton.firstGame = YES;
-    
 }
 
 
@@ -256,9 +245,6 @@
     
     // And add it to the game scene
     [[CCDirector sharedDirector] pushScene:pauseScene withTransition:[CCTransition transitionCrossFadeWithDuration:0.5f]];
-    
-    
-    
 }
 
 #pragma mark User Interaction
@@ -278,13 +264,13 @@
 
 - (void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    // when touches end, release the catapult
+    // when touches end
     [self releaseMovement];
 }
 
 - (void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    // when touches are cancelled, release the catapult
+    // when touches are cancelled
     [self releaseMovement];
 }
 
