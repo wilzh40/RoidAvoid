@@ -69,6 +69,8 @@
     float angle = toEarth + randomFactor;
     float angularVelocity = frandom_range(minAngVel, maxAngVel) * random() > 0 ? 1 : -1;
     
+    //Holy shit this code is so fucking beautiful -Wilson
+    
     self.scale = scale;
     [self.physicsBody setVelocity:ccpMult(ccp(cosf(angle), sinf(angle)), speed)];
     [self.physicsBody setAngularVelocity:angularVelocity];

@@ -7,7 +7,7 @@
 //
 
 #import "MainScene.h"
-
+#import "Singleton.h"
 @implementation MainScene
 
 - (void) onEnter
@@ -15,6 +15,10 @@
     int highScore = [[[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"] intValue ];
     
     [highScoreLabel setString:[NSString stringWithFormat:@"High Score: %i",highScore]];
+    
+    Singleton *singleton = [Singleton sharedManager];
+    singleton.firstGame = TRUE;
+    
     [super onEnter];
 }
 

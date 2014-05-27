@@ -18,6 +18,7 @@
 	
 	[super onEnter];
     
+    //Resets all the variables to start a new game
     
     if  ((singleton.firstGame == YES)) {
         [self setupScene];
@@ -29,15 +30,20 @@
 
 - (void) setupScene
 {
+    
+    
     self->heroMovement = MOVE_STILL;
     self.userInteractionEnabled = TRUE;
     self.multipleTouchEnabled = TRUE;
     physicsNode.debugDraw = NO;
     if (physicsNode.collisionDelegate == Nil) physicsNode.collisionDelegate = self;
+    
     physicsNode.sleepTimeThreshold = 10.0f;
     physicsNode.gravity = ccp(0,0);
+    
     singleton.firstGame = NO;
     singleton.score = 0;
+    
     asteroids = [NSMutableArray array];
     gravityBodies = [NSMutableArray array];
 
@@ -75,6 +81,9 @@
 
 - (void) setStars
 {
+    
+    
+    
     CCPositionType type;
     type.xUnit = CCPositionUnitNormalized;
     type.yUnit = CCPositionUnitNormalized;
@@ -235,12 +244,6 @@
     
     singleton.firstGame = YES;
     
-    // And add it to the game scene
-    // [[CCDirector sharedDirector] pushScene:[CCTransitionFade transitionWithDuration:0.5f scene:GameOverScene withColor:ccc3(0, 0, 0)]];
-    
-    
-    //[self pauseActions];
-    
 }
 
 
@@ -257,6 +260,8 @@
     
     
 }
+
+#pragma mark User Interaction
 
 - (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
