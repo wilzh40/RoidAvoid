@@ -13,7 +13,7 @@
 #define frandom                 ((float)arc4random()/UINT64_C(0x100000000))
 #define frandom_range(low,high) (((high-low)*frandom)+low)
 #define random_range(low,high)  ((arc4random()%(high-low+1))+low)
-#define RTD(radians) (radian/3.14159*180)
+#define RTD(radians) (radian/M_PI*180)
 
 #define ASTEROID_SPAWN_RADIUS (325.0f)
 
@@ -37,13 +37,13 @@
 #define ASTEROID_OUTLIER_SPEED_MIN (18.f)
 #define ASTEROID_OUTLIER_SPEED_MAX (25.f)
 
-#define GRAVITY_CONSTANT (400000000.0f)
+#define EARTH_GRAVITY (8.0f * 1000.0f * 1000.0f * 1000.0f)
 
-#define CRATER_STAND_HEIGHT (48.0f)
+#define CRATER_STAND_HEIGHT (47.0f)
 
-#define HERO_INITIAL_ANGLE (3.14/2)
+#define HERO_INITIAL_ANGLE (M_PI_2)
 #define HERO_MOVE_SPEED (2.0f)
-#define HERO_STAND_HEIGHT (65.0f)
+#define HERO_STAND_HEIGHT (64.0f)
 
 #define STARS_COUNT (100)
 

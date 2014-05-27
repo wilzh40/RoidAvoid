@@ -60,10 +60,10 @@
 
 - (void) setPlanet
 {
-        earth = (Planet *)[CCBReader load:@"Earth"];
-        [physicsNode addChild:earth];
-        [gravityBodies addObject:earth];
-    
+    earth = (Planet *)[CCBReader load:@"Earth"];
+    earth.gravityStrength = EARTH_GRAVITY;
+    [physicsNode addChild:earth];
+    [gravityBodies addObject:earth];
 }
 
 - (void) setHero
@@ -113,25 +113,22 @@
     
     //some simple testing code
     [self genAsteroids];
-    [self applyGravity];
+    [self applyGravity:dt];
     [self moveHero:dt];
 }
 
-- (void) applyGravity
+- (void) applyGravity:(float) dt
 {
-    float gravityMultiplier = GRAVITY_CONSTANT;
-    for (CCNode *gravityBody in gravityBodies) {
+    for (Planet *gravityBody in gravityBodies) {
+        float gravityMultiplier = gravityBody.gravityStrength;
         //NSLog(@"gravityBody x:%f y:%f", gravityBody.position.x, gravityBody.position.y);
-        for (CCNode* child in physicsNode.children) {
-            CCPhysicsBody *physicsBody = child.physicsBody;
-            if (!physicsBody.affectedByGravity) {
-                continue;
-            }
-            CGPoint distanceVector = ccpSub(gravityBody.position, child.position);
+        for (Asteroid* roid in asteroids) {
+            CCPhysicsBody *physicsBody = roid.physicsBody;
+            CGPoint distanceVector = ccpSub(gravityBody.position, roid.position);
             float distance = powf(distanceVector.x, 2) + powf(distanceVector.y, 2);
             //float angle = atan2f(distanceVector.y, distanceVector.x);
-            //NSLog(@"affectedByGravity x:%f y:%f α:%f r:%f", child.position.x, child.position.y, angle, distance);
-            [physicsBody applyForce: ccpMult(distanceVector, gravityMultiplier / powf(distance, 2))];
+            //NSLog(@"affectedByGravity x:%f y:%f α:%f r:%f", roid.position.x, roid.position.y, angle, distance);
+            [physicsBody applyForce: ccpMult(distanceVector, dt * gravityMultiplier / powf(distance, 2))];
         }
     }
 }

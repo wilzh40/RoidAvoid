@@ -19,9 +19,9 @@
 - (void) setVars
 {
     self.scale = 0.4f;
-    
+
     CCPhysicsBody *physicsBody = self.physicsBody;
-    
+
     // This is used to pick which collision delegate method to call, see GameScene.m for more info.
 	physicsBody.collisionType = @"planet";
 	// This sets up simple collision rules.

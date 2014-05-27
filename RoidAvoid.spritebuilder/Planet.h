@@ -11,4 +11,6 @@
 
 @interface Planet : CCSprite
 
+@property (readwrite,nonatomic) float gravityStrength;
+
 @end
