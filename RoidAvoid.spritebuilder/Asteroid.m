@@ -16,13 +16,11 @@
     singleton = [Singleton sharedManager];
     winSize = [[CCDirector sharedDirector]viewSize];
     
-    
-//    //adds a particl
+//    //adds a particle
 //    CCParticleGalaxy *particleSystem = [CCParticleGalaxy particleWithTotalParticles:20];
 //    [particleSystem setTexture:[CCTexture textureWithFile:@"ccbParticleSmoke.png"]];
 //    particleSystem.emitterMode = CCParticleSystemPositionTypeRelative;
 //    [self addChild:particleSystem];
-//                              
 	
     [self setVars];
 	[super onEnter];
@@ -30,8 +28,6 @@
 
 - (void) setVars
 {
-
-    
     // This is used to pick which collision delegate method to call, see GameScene.m for more info.
 	self.physicsBody.collisionType = @"asteroid";
 	// This sets up simple collision rules.
@@ -64,16 +60,22 @@
 {
     float scale = frandom_range(minSize, maxSize);
     float speed = frandom_range(minSpeed, maxSpeed);
-    float toEarth = -ccpToAngle(singleton.asteroidPos);
+    float toEarth = -ccpToAngle(self.position);
     float randomFactor = frandom_range(minAngle, maxAngle) * random() > 0 ? 1 : -1;
     float angle = toEarth + randomFactor;
     float angularVelocity = frandom_range(minAngVel, maxAngVel) * random() > 0 ? 1 : -1;
     
     //Holy shit this code is so fucking beautiful -Wilson
     
-    self.scale = scale;
+    [self doScale:scale];
     [self.physicsBody setVelocity:ccpMult(ccp(cosf(angle), sinf(angle)), speed)];
     [self.physicsBody setAngularVelocity:angularVelocity];
+}
+
+- (void) doScale:(float)scale
+{
+    self.scale = scale;
+    self.physicsBody.mass = scale;
 }
 
 @end

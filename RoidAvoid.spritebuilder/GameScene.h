@@ -13,6 +13,7 @@
 
 #import "Asteroid.h"
 #import "Hero.h"
+#import "Planet.h"
 
 enum HeroMovement {
     MOVE_RIGHT = -1,
@@ -24,8 +25,8 @@ enum HeroMovement {
     CGSize winSize;
     Singleton *singleton;
     CCPhysicsNode *physicsNode;
-    CCNode *earth;
-    CCNode *hero;
+    Planet *earth;
+    Hero *hero;
     float heroAngle;
     enum HeroMovement heroMovement;
     CCNode *bgColor;

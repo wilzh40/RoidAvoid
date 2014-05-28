@@ -11,10 +11,8 @@
 #import "Singleton.h"
 
 @interface GameOverScene : CCNode {
-    
     CCLabelTTF *scoreLabel, *highScoreLabel, *yourScoreLabel, *highScoreLabelHeader;
     Singleton *singleton;
-    
 }
 
 @end

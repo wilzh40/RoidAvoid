@@ -20,6 +20,7 @@
     });
     return sharedMyManager;
 }
+
 - (id) init {
     if (self = [super init]) {
         _firstGame = TRUE;

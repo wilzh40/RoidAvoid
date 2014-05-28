@@ -13,7 +13,6 @@
 
 - (void) onEnter
 {
-    
     backgroundVolume.sliderValue = [[[NSUserDefaults standardUserDefaults] objectForKey:@"BGVolume"]floatValue];
     effectsVolume.sliderValue = [[[NSUserDefaults standardUserDefaults] objectForKey:@"FXVolume"]floatValue];
     
@@ -25,13 +24,10 @@
 - (void) pressedBack
 {
     [[CCDirector sharedDirector]popSceneWithTransition:[CCTransition transitionFadeWithDuration:0.5f]];
-
-    
 }
 
 - (void) pressedResetHighScore
 {
-    
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:@"HighScore"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     //Kills the highscore
@@ -39,7 +35,6 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
     
     NSLog(@"Reset High Score");
-    
 }
 
 - (void) setCalibrationVector
@@ -66,17 +61,5 @@
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:sender.sliderValue] forKey:@"BGVolume"];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
-
-
-- (void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
-
-{
-    
-    calibrationVector = ccp( acceleration.y, acceleration.z );
-    
-}
-
-
-
 
 @end

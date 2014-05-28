@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface CreditsScene : CCNode {
-    
-}
+@interface CreditsScene : CCNode
 
 @end
