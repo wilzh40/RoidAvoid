@@ -15,6 +15,7 @@
     
     singleton = [Singleton sharedManager];
     winSize = [[CCDirector sharedDirector]viewSize];
+
 	
 	[super onEnter];
     
@@ -26,6 +27,13 @@
     
 }
 
+- (void) onExit
+{
+    [_motionManager startAccelerometerUpdates];
+    [super onExit];
+	
+}
+
 #pragma mark Setup
 
 - (void) setupScene
@@ -34,6 +42,7 @@
     
     self->heroMovement = MOVE_STILL;
     self.userInteractionEnabled = TRUE;
+
     self.multipleTouchEnabled = TRUE;
     physicsNode.debugDraw = NO;
     if (physicsNode.collisionDelegate == Nil) physicsNode.collisionDelegate = self;
@@ -46,6 +55,9 @@
     
     asteroids = [NSMutableArray array];
     gravityBodies = [NSMutableArray array];
+    
+    _motionManager = [[CMMotionManager alloc]init];
+    [_motionManager startAccelerometerUpdates];
 
     [self displayHighScore];
     [self setPlanet];
@@ -81,7 +93,6 @@
 
 - (void) setStars
 {
-    
     
     
     CCPositionType type;
@@ -121,6 +132,7 @@
     [self genAsteroids];
     [self applyGravity];
     [self moveHero:dt];
+    [self updateAccelerometer];
 }
 
 - (void) applyGravity
@@ -263,35 +275,68 @@
 
 #pragma mark User Interaction
 
-- (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+//- (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+//{
+//    CGPoint touchLocation = [touch locationInNode:earth];
+//    if (touchLocation.x > earth.contentSize.width / 2.0f) {
+//        self->heroMovement = MOVE_RIGHT;
+//        ((CCSprite *)hero).flipX = TRUE;
+//    }
+//    else {
+//        self->heroMovement = MOVE_LEFT;
+//        ((CCSprite *)hero).flipX = FALSE;
+//    }
+//}
+//
+//- (void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+//{
+//    // when touches end, release the catapult
+//    [self releaseMovement];
+//}
+//
+//- (void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
+//{
+//    // when touches are cancelled, release the catapult
+//    [self releaseMovement];
+//}
+//
+//- (void) releaseMovement
+//{
+//    //self->heroMovement = MOVE_STILL;
+//}
+
+//Gets the 3d dotproduct
+#define Vec3DotProduct(v11,v12,v13,v21,v22,v23)
+//Gets the 3d Scalar
+#define Sca3(x,y,z) pow((x*x+y*y+z*z),1/3)
+
+- (void) updateAccelerometer
 {
-    CGPoint touchLocation = [touch locationInNode:earth];
-    if (touchLocation.x > earth.contentSize.width / 2.0f) {
+
+    CGPoint calibrationVector = singleton.calibrationVector;
+    CMAccelerometerData *accelerometerData = _motionManager.accelerometerData;
+    CMAcceleration acceleration = accelerometerData.acceleration;
+    float  tiltAngle = -ccpToAngle( ccpSub( ccp( acceleration.y, acceleration.x ), calibrationVector ) );
+    float tolerance = ACCELEROMETER_TOLERANCE/180*3.14159;
+    
+    if (heroAngle - tiltAngle > tolerance) {
         self->heroMovement = MOVE_RIGHT;
         ((CCSprite *)hero).flipX = TRUE;
+    
     }
-    else {
+    else if (heroAngle - tiltAngle < -tolerance){
         self->heroMovement = MOVE_LEFT;
         ((CCSprite *)hero).flipX = FALSE;
     }
+    else self->heroMovement = MOVE_STILL;
+    
+    NSLog(@"%f,%f", tiltAngle/3.14159*180, heroAngle/3.14159*180);
+
+
+
+    
 }
 
-- (void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
-{
-    // when touches end, release the catapult
-    [self releaseMovement];
-}
-
-- (void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
-{
-    // when touches are cancelled, release the catapult
-    [self releaseMovement];
-}
-
-- (void) releaseMovement
-{
-    self->heroMovement = MOVE_STILL;
-}
 
 - (void) moveHero:(CCTime) dt
 {

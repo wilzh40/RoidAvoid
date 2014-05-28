@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		774C85531935AEB900DB8174 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 774C85521935AEB900DB8174 /* CoreMotion.framework */; };
 		775498441931DF8A00787D1A /* GameOverScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 775498431931DF8A00787D1A /* GameOverScene.m */; };
 		77603954193146D20054E6FD /* Singleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 77603953193146D20054E6FD /* Singleton.m */; };
 		7760395A19314A700054E6FD /* OptionScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760395919314A700054E6FD /* OptionScene.m */; };
@@ -67,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		774C85521935AEB900DB8174 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		775498421931DF8A00787D1A /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
 		775498431931DF8A00787D1A /* GameOverScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverScene.m; sourceTree = "<group>"; };
 		77603952193146D20054E6FD /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Singleton.h; path = Source/Singleton.h; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				774C85531935AEB900DB8174 /* CoreMotion.framework in Frameworks */,
 				B737898A1807642B0076A88C /* libcocos2d.a in Frameworks */,
 				B77F1B3217B978D7009739AE /* QuartzCore.framework in Frameworks */,
 				B77F1B3417B978D7009739AE /* OpenGLES.framework in Frameworks */,
@@ -261,6 +264,7 @@
 		B77F1B3017B978D7009739AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				774C85521935AEB900DB8174 /* CoreMotion.framework */,
 				B7B3713D180358F1007369CC /* libObjectiveChipmunk.a */,
 				B77F1B3117B978D7009739AE /* QuartzCore.framework */,
 				B77F1B3317B978D7009739AE /* OpenGLES.framework */,

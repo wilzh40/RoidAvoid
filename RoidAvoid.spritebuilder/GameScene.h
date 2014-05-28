@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreMotion/CoreMotion.h>
 #import "cocos2d.h"
 #import "Singleton.h"
 
@@ -19,7 +20,7 @@ enum HeroMovement {
     MOVE_LEFT,
 };
 
-@interface GameScene : CCNode <CCPhysicsCollisionDelegate> {
+@interface GameScene : CCNode <CCPhysicsCollisionDelegate,UIAccelerometerDelegate> {
     CGSize winSize;
     Singleton *singleton;
     CCPhysicsNode *physicsNode;
@@ -34,7 +35,7 @@ enum HeroMovement {
     CCLabelTTF *scoreLabel;
     CCLabelTTF *highScoreLabel;
     
-    
+    CMMotionManager *_motionManager;
     
     float timer, nextFallTime,fallInterval,qForFall,currentFallType,asteroidSize,asteroidPosition,fallingSpeed;
     double curTime;

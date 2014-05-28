@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreMotion/CoreMotion.h>
 
 #pragma mark Useful Macros
 
@@ -45,15 +46,23 @@
 #define HERO_MOVE_SPEED (2.0f)
 #define HERO_STAND_HEIGHT (65.0f)
 
+#define ACCELEROMETER_TOLERANCE (10.0f)
+
+
 #define STARS_COUNT (100)
 
 @interface Singleton : NSObject {
     int _score;
     bool _firstGame;
+    
+    CGPoint _calibrationVector;
+    
+    CMMotionManager *_motionManager;
 }
 + (id)sharedManager;
 
 @property (readwrite,nonatomic) int score;
 @property (readwrite,nonatomic) bool firstGame;
 @property (readwrite,nonatomic) CGPoint asteroidPos;
+@property (readwrite,nonatomic) CGPoint calibrationVector;
 @end

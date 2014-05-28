@@ -23,6 +23,7 @@
 - (id) init {
     if (self = [super init]) {
         _firstGame = TRUE;
+         _motionManager = [[CMMotionManager alloc] init];
     }
     return self;
 }

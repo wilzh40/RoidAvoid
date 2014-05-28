@@ -7,7 +7,7 @@
 //
 
 #import "OptionScene.h"
-
+#import "Singleton.h"
 
 @implementation OptionScene
 
@@ -16,6 +16,9 @@
     
     backgroundVolume.sliderValue = [[[NSUserDefaults standardUserDefaults] objectForKey:@"BGVolume"]floatValue];
     effectsVolume.sliderValue = [[[NSUserDefaults standardUserDefaults] objectForKey:@"FXVolume"]floatValue];
+    
+    self.userInteractionEnabled = TRUE;
+    singleton = [Singleton sharedManager];
     [super onEnter];
 }
 
@@ -26,7 +29,7 @@
     
 }
 
-- (void)pressedResetHighScore
+- (void) pressedResetHighScore
 {
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:0] forKey:@"HighScore"];
@@ -37,6 +40,13 @@
     
     NSLog(@"Reset High Score");
     
+}
+
+- (void) setCalibrationVector
+
+{
+    singleton.calibrationVector = calibrationVector;
+    NSLog(@"Set Calibration Vector:%f,%f",calibrationVector.x,calibrationVector.y);
 }
 
 - (void)valueChanged1:(CCSlider *)sender
@@ -56,6 +66,17 @@
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:sender.sliderValue] forKey:@"BGVolume"];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
+
+
+- (void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
+
+{
+    
+    calibrationVector = ccp( acceleration.y, acceleration.z );
+    
+}
+
+
 
 
 @end

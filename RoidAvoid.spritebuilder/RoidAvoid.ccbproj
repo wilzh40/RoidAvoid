@@ -98,8 +98,6 @@
 			<integer>1</integer>
 			<key>format_ios_sound_quality</key>
 			<integer>0</integer>
-			<key>isDirty</key>
-			<true/>
 		</dict>
 		<key>Sounds/plasmaCannon_2.wav</key>
 		<dict>
@@ -111,8 +109,6 @@
 			<integer>0</integer>
 			<key>format_ios_sound_quality</key>
 			<integer>0</integer>
-			<key>isDirty</key>
-			<true/>
 		</dict>
 		<key>Sounds/thud.wav</key>
 		<dict>
@@ -124,41 +120,29 @@
 			<integer>0</integer>
 			<key>format_ios_sound_quality</key>
 			<integer>0</integer>
-			<key>isDirty</key>
-			<true/>
 		</dict>
 		<key>Sprite</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>isSmartSpriteSheet</key>
 			<true/>
 		</dict>
 		<key>Sprite/1.png</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>scaleFrom</key>
 			<integer>1</integer>
 		</dict>
 		<key>Sprite/2.png</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>scaleFrom</key>
 			<integer>1</integer>
 		</dict>
 		<key>Sprite/3.png</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>scaleFrom</key>
 			<integer>1</integer>
 		</dict>
 		<key>Sprite/4.png</key>
 		<dict>
-			<key>isDirty</key>
-			<true/>
 			<key>scaleFrom</key>
 			<integer>1</integer>
 		</dict>
