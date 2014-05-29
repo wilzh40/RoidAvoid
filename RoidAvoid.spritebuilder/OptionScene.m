@@ -19,10 +19,27 @@
     backgroundVolume.sliderValue = [[[NSUserDefaults standardUserDefaults] objectForKey:@"BGVolume"]floatValue];
     effectsVolume.sliderValue = [[[NSUserDefaults standardUserDefaults] objectForKey:@"FXVolume"]floatValue];
     
-    self.userInteractionEnabled = TRUE;
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"ControlScheme"]intValue] == kTouch) {
+        controlScheme.title = [NSString stringWithFormat:@"Control Scheme: Touch"];
+    }
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"ControlScheme"]intValue] == kAccelerometer) {
+        controlScheme.title = [NSString stringWithFormat:@"Control Scheme: Accelerometer"];
+    }
+    
+
     singleton = [Singleton sharedManager];
     _motionManager = [[CMMotionManager alloc]init];
+    
+    
+    [_motionManager startAccelerometerUpdates];
+        self.userInteractionEnabled = TRUE;
     [super onEnter];
+}
+
+- (void) onExit
+{
+    [_motionManager stopAccelerometerUpdates];
+    [super onExit];
 }
 
 - (void) pressedBack
@@ -42,16 +59,30 @@
 }
 
 - (void) setCalibrationVector
-
 {
-    [_motionManager startAccelerometerUpdates];
   
     CMAccelerometerData *accelerometerData = _motionManager.accelerometerData;
     CMAcceleration acceleration = accelerometerData.acceleration;
 
-    singleton.calibrationVector = ccp(acceleration.y,acceleration.z);
-    NSLog(@"Set Calibration Vector:%f,%f",calibrationVector.x,calibrationVector.y);
-    [_motionManager stopAccelerometerUpdates];
+    singleton.calibrationVector = ccp(acceleration.x,acceleration.y);
+    NSLog(@"Set Calibration Vector:%f,%f",singleton.calibrationVector.y,singleton.calibrationVector.x);
+
+}
+
+- (void) setControlScheme
+{
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"ControlScheme"]intValue] == kTouch) {
+        NSLog(@"%i,%i",[[[NSUserDefaults standardUserDefaults] objectForKey:@"ControlScheme"]intValue],kTouch);
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:kAccelerometer] forKey:@"ControlScheme"];
+       [controlScheme setTitle:[NSString stringWithFormat:@"Control Scheme: Accelerometer"]];
+    
+    }
+    else if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"ControlScheme"]intValue] == kAccelerometer) {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:kTouch] forKey:@"ControlScheme"];
+        [controlScheme setTitle:[NSString stringWithFormat:@"Control Scheme: Touch"]];
+    }
+    NSLog(@"Changed Control Scheme!");
+
 }
 
 - (void)valueChanged1:(CCSlider *)sender

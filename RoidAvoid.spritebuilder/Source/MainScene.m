@@ -18,6 +18,7 @@
     
     Singleton *singleton = [Singleton sharedManager];
     singleton.firstGame = TRUE;
+    singleton.controlScheme = [[[NSUserDefaults standardUserDefaults] objectForKey:@"ControlScheme"]intValue];
     
     [super onEnter];
 }

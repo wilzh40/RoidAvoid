@@ -51,11 +51,17 @@
 
 #define STARS_COUNT (100)
 
+typedef NS_ENUM(NSUInteger, ControlScheme) {
+    kTouch = 0,
+    kAccelerometer = 1
+};
 
 
 @interface Singleton : NSObject {
     int _score;
     bool _firstGame;
+    
+    ControlScheme _controlScheme;
     
     CGPoint _calibrationVector;
     
@@ -66,6 +72,7 @@
 
 @property (readwrite,nonatomic) int score;
 @property (readwrite,nonatomic) bool firstGame;
+@property (readwrite,nonatomic) ControlScheme controlScheme;
 
 @property (readwrite,nonatomic) CGPoint asteroidPos;
 @property (readwrite,nonatomic) CGPoint calibrationVector;

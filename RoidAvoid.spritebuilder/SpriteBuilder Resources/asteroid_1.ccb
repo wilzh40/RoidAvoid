@@ -41,20 +41,20 @@
 			<key>bodyShape</key>
 			<integer>1</integer>
 			<key>cornerRadius</key>
-			<real>50.897655487060547</real>
+			<real>49.975780487060547</real>
 			<key>density</key>
 			<real>1</real>
 			<key>dynamic</key>
 			<true/>
 			<key>elasticity</key>
-			<real>0.5</real>
+			<real>0.30000001192092896</real>
 			<key>friction</key>
-			<real>0.0</real>
+			<real>0.30000001192092896</real>
 			<key>points</key>
 			<array>
 				<array>
-					<real>66.29296875</real>
-					<real>62.3125</real>
+					<real>67</real>
+					<real>63.5</real>
 				</array>
 			</array>
 		</dict>

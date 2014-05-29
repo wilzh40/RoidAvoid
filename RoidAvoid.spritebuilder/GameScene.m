@@ -37,8 +37,10 @@
 - (void) setupScene
 {
     self->heroMovement = MOVE_STILL;
+    if (singleton.controlScheme == kTouch) {
     self.userInteractionEnabled = TRUE;
-
+    }
+    
     self.multipleTouchEnabled = TRUE;
     physicsNode.debugDraw = NO;
     if (physicsNode.collisionDelegate == Nil)
@@ -260,35 +262,35 @@
 
 #pragma mark User Interaction
 
-//- (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
-//{
-//    CGPoint touchLocation = [touch locationInNode:earth];
-//    if (touchLocation.x > earth.contentSize.width / 2.0f) {
-//        self->heroMovement = MOVE_RIGHT;
-//        ((CCSprite *)hero).flipX = TRUE;
-//    }
-//    else {
-//        self->heroMovement = MOVE_LEFT;
-//        ((CCSprite *)hero).flipX = FALSE;
-//    }
-//}
-//
-//- (void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
-//{
-//    // when touches end, release the catapult
-//    [self releaseMovement];
-//}
-//
-//- (void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
-//{
-//    // when touches are cancelled, release the catapult
-//    [self releaseMovement];
-//}
-//
-//- (void) releaseMovement
-//{
-//    //self->heroMovement = MOVE_STILL;
-//}
+- (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    CGPoint touchLocation = [touch locationInNode:earth];
+    if (touchLocation.x > earth.contentSize.width / 2.0f) {
+        self->heroMovement = MOVE_RIGHT;
+        ((CCSprite *)hero).flipX = TRUE;
+    }
+    else {
+        self->heroMovement = MOVE_LEFT;
+        ((CCSprite *)hero).flipX = FALSE;
+    }
+}
+
+- (void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    // when touches end, release the catapult
+    [self releaseMovement];
+}
+
+- (void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    // when touches are cancelled, release the catapult
+    [self releaseMovement];
+}
+
+- (void) releaseMovement
+{
+    self->heroMovement = MOVE_STILL;
+}
 
 //Gets the 3d dotproduct
 #define Vec3DotProduct(v11,v12,v13,v21,v22,v23)
@@ -297,7 +299,8 @@
 
 - (void) updateAccelerometer
 {
-    
+    if (singleton.controlScheme == kAccelerometer) {
+
     float unitCircle = 360;
     float halfCircle = 180;
     
@@ -351,23 +354,10 @@
    // else self->heroMovement = MOVE_STILL;
     
     NSLog(@"%i,%i", newTiltAngle, newHeroAngle);
+    }
 }
 
-//- (void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
-//{
-//    // when touches end
-//    [self releaseMovement];
-//}
-//
-//- (void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
-//{
-//    // when touches are cancelled
-//    [self releaseMovement];
-//}
-//
-//
-//    
-//}
+
 
 
 - (void) moveHero:(CCTime) dt

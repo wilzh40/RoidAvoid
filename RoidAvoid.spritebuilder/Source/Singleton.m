@@ -24,9 +24,21 @@
 - (id) init {
     if (self = [super init]) {
         _firstGame = TRUE;
-         _motionManager = [[CMMotionManager alloc] init];
+        _motionManager = [[CMMotionManager alloc] init];
+        
+        [self setDefaultVars];
     }
     return self;
 }
+
+- (void) setDefaultVars
+{
+    if ([[NSUserDefaults standardUserDefaults]objectForKey:@"ControlScheme"] == nil) {
+        //[[NSUserDefaults standardUserDefaults]setObject:[NSNumber numberWithInteger:kAccelerometer] forKey:@"ControlScheme"];
+    }
+
+
+}
+
 
 @end

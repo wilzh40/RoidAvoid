@@ -10,8 +10,9 @@
 #import "cocos2d.h"
 #import "Singleton.h"
 #import <CoreMotion/CoreMotion.h>
-@interface OptionScene : CCNode <UIAccelerometerDelegate>{
+@interface OptionScene : CCNode {
     CCSlider *backgroundVolume, *effectsVolume;
+    CCButton *controlScheme;
     Singleton *singleton;
     CGPoint calibrationVector;
     
