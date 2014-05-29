@@ -54,6 +54,7 @@
     
     asteroids = [NSMutableArray array];
     gravityBodies = [NSMutableArray array];
+    asteroidTrails = [NSMutableArray array];
     
     _motionManager = [[CMMotionManager alloc]init];
     [_motionManager startAccelerometerUpdates];
@@ -129,6 +130,7 @@
     [self genAsteroids];
     [self applyGravity:dt];
     [self moveHero:dt];
+    [self updateParticles];
     [self updateAccelerometer];
 }
 
@@ -185,10 +187,17 @@
 	[physicsNode addChild:roid];
 }
 
+- (void) updateParticles
+{
+    for (Asteroid *n in asteroids){
+        n.asteroidTrail.position = n.position;
+        [n.asteroidTrail setScale:n.scale];
+    }
+}
 
 #pragma mark Collision
 
-- (void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair planet:(CCNode *)planet asteroid:(CCNode *)asteroid
+- (void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair planet:(CCNode *)planet asteroid:(Asteroid *)asteroid
 {
     //Add Crater
     
@@ -199,19 +208,20 @@
 //    crater.rotation = (collisionAngle+3.14159/4)/3.14159*180;
 //    crater.position= ccpAdd(collisionOffset, ccpMult(collisionVelocity, 1));
     
-    
     [physicsNode addChild:crater z:10];
-    [self positionNodeOnEarth:crater atAngle:ccpToAngle(asteroid.position) atHeight:CRATER_STAND_HEIGHT];
     
+    [self positionNodeOnEarth:crater atAngle:ccpToAngle(asteroid.position) atHeight:CRATER_STAND_HEIGHT];
+
     CCActionFiniteTime *fadeOut = [CCActionFadeOut actionWithDuration:1.5f];
     CCActionRemove *action = [CCActionRemove action];
     [crater runAction:[CCActionSequence actionWithArray:@[fadeOut,action]]];
     
-    
     //Play Sound
     [[OALSimpleAudio sharedInstance]playEffect:@"thud.caf"];
-    
+    [self.physicsNode removeChild:asteroid.asteroidTrail];
     [asteroids removeObject:asteroid];
+    
+    
     [physicsNode removeChild:asteroid cleanup:YES];
 }
 

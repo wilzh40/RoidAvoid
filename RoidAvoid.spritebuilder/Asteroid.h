@@ -13,6 +13,9 @@
 @interface Asteroid : CCSprite {
     CGSize winSize;
     Singleton *singleton;
+    CCParticleSystem *_asteroidTrail;
 }
+
+@property (readwrite,nonatomic) CCParticleSystem *asteroidTrail;
 
 @end

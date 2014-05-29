@@ -15,14 +15,9 @@
 {
     singleton = [Singleton sharedManager];
     winSize = [[CCDirector sharedDirector]viewSize];
-    
-//    //adds a particle
-//    CCParticleGalaxy *particleSystem = [CCParticleGalaxy particleWithTotalParticles:20];
-//    [particleSystem setTexture:[CCTexture textureWithFile:@"ccbParticleSmoke.png"]];
-//    particleSystem.emitterMode = CCParticleSystemPositionTypeRelative;
-//    [self addChild:particleSystem];
-	
+
     [self setVars];
+    [self addParticles];
 	[super onEnter];
 }
 
@@ -76,6 +71,20 @@
 {
     self.scale = scale;
     self.physicsBody.mass = scale;
+    _asteroidTrail.scale = scale;
+}
+
+- (void) addParticles
+{
+    _asteroidTrail = (CCParticleSystem *)[CCBReader load:@"AsteroidTrail"];
+    
+    // make the particle effect clean itself up, once it is completed
+    _asteroidTrail.autoRemoveOnFinish = TRUE;
+    _asteroidTrail.particlePositionType = CCParticleSystemPositionTypeFree;
+
+    [self.parent addChild:_asteroidTrail z:-1];
+    
+
 }
 
 @end

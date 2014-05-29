@@ -31,7 +31,7 @@ enum HeroMovement {
     enum HeroMovement heroMovement;
     CCNode *bgColor;
     
-    NSMutableArray *asteroids, *gravityBodies;
+    NSMutableArray *asteroids, *gravityBodies, *asteroidTrails;
     
     CCLabelTTF *scoreLabel;
     CCLabelTTF *highScoreLabel;
