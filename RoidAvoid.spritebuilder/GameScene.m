@@ -297,25 +297,60 @@
 
 - (void) updateAccelerometer
 {
-
+    
+    float unitCircle = 360;
+    float halfCircle = 180;
+    
     CGPoint calibrationVector = singleton.calibrationVector;
     CMAccelerometerData *accelerometerData = _motionManager.accelerometerData;
     CMAcceleration acceleration = accelerometerData.acceleration;
-    float  tiltAngle = -ccpToAngle( ccpSub( ccp( acceleration.y, acceleration.x ), calibrationVector ) );
-    float tolerance = ACCELEROMETER_TOLERANCE/180*3.14159;
+    float  tiltAngle = (-ccpToAngle( ccpSub( ccp( acceleration.y, acceleration.x ), calibrationVector )));
+    float tolerance = ACCELEROMETER_TOLERANCE;
+
+    //Converted radians to degrees
     
-    if (heroAngle - tiltAngle > tolerance) {
+    int  newHeroAngle = heroAngle/3.14159*180;
+    int  newTiltAngle = tiltAngle/3.14159*180;
+    
+    //Scaled it from -180 to 180 + 2*PI*N -> 0 to 360
+    
+    newTiltAngle = newTiltAngle < 0 ? newTiltAngle + unitCircle*2 : newTiltAngle;
+    newHeroAngle = (newHeroAngle < 0 ? newHeroAngle + unitCircle*2 : newHeroAngle);
+    float angleDiff = newHeroAngle % 360 - newTiltAngle % 360;
+    
+    //If the angle difference isn't high enough then the dinosaur stays still
+    
+    if ((int)fabs(angleDiff)%360 < tolerance ) {
+        self->heroMovement = MOVE_STILL;
+    }
+    
+    //Code for looping the dinosaur around the circle when the angle difference is high but the distance is close
+    
+    else if ((angleDiff > 0 && angleDiff < halfCircle) || (angleDiff < 0 && angleDiff < -halfCircle)) {
         self->heroMovement = MOVE_RIGHT;
         ((CCSprite *)hero).flipX = TRUE;
-    
     }
-    else if (heroAngle - tiltAngle < -tolerance){
+    else {
         self->heroMovement = MOVE_LEFT;
         ((CCSprite *)hero).flipX = FALSE;
     }
-    else self->heroMovement = MOVE_STILL;
     
-    NSLog(@"%f,%f", tiltAngle/3.14159*180, heroAngle/3.14159*180);
+//    else if (newHeroAngle - newTiltAngle < 0 || newHeroAngle - newTiltAngle > halfCircle) {
+//        self->heroMovement = MOVE_LEFT;
+//        ((CCSprite *)hero).flipX = FALSE;
+//    }
+//    if (newHeroAngle - tiltAngle > tolerance || newHeroAngle - tiltAngle < -halfCircle) {
+//        self->heroMovement = MOVE_RIGHT;
+//        ((CCSprite *)hero).flipX = TRUE;
+//    
+//    }
+//    else if (newHeroAngle - tiltAngle < -tolerance || newHeroAngle - tiltAngle > halfCircle){
+//        self->heroMovement = MOVE_LEFT;
+//        ((CCSprite *)hero).flipX = FALSE;
+    
+   // else self->heroMovement = MOVE_STILL;
+    
+    NSLog(@"%i,%i", newTiltAngle, newHeroAngle);
 }
 
 //- (void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
@@ -337,6 +372,7 @@
 
 - (void) moveHero:(CCTime) dt
 {
+    
     heroAngle += dt * self->heroMovement * HERO_MOVE_SPEED;
     [self updateHeroToRotation];
 }

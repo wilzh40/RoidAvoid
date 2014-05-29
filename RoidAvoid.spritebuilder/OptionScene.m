@@ -13,11 +13,15 @@
 
 - (void) onEnter
 {
+    
+
+    
     backgroundVolume.sliderValue = [[[NSUserDefaults standardUserDefaults] objectForKey:@"BGVolume"]floatValue];
     effectsVolume.sliderValue = [[[NSUserDefaults standardUserDefaults] objectForKey:@"FXVolume"]floatValue];
     
     self.userInteractionEnabled = TRUE;
     singleton = [Singleton sharedManager];
+    _motionManager = [[CMMotionManager alloc]init];
     [super onEnter];
 }
 
@@ -40,13 +44,19 @@
 - (void) setCalibrationVector
 
 {
-    singleton.calibrationVector = calibrationVector;
+    [_motionManager startAccelerometerUpdates];
+  
+    CMAccelerometerData *accelerometerData = _motionManager.accelerometerData;
+    CMAcceleration acceleration = accelerometerData.acceleration;
+
+    singleton.calibrationVector = ccp(acceleration.y,acceleration.z);
     NSLog(@"Set Calibration Vector:%f,%f",calibrationVector.x,calibrationVector.y);
+    [_motionManager stopAccelerometerUpdates];
 }
 
 - (void)valueChanged1:(CCSlider *)sender
 {
-    // Change volume of your sounds
+    // Change volume of your   n nh                                                                                                                                  sounds
     [[OALSimpleAudio sharedInstance] setEffectsVolume:sender.sliderValue];
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:sender.sliderValue] forKey:@"FXVolume"];

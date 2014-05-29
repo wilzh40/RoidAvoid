@@ -46,10 +46,12 @@
 #define HERO_MOVE_SPEED (2.0f)
 #define HERO_STAND_HEIGHT (64.0f)
 
-#define ACCELEROMETER_TOLERANCE (10.0f)
+#define ACCELEROMETER_TOLERANCE (25.0f)
 
 
 #define STARS_COUNT (100)
+
+
 
 @interface Singleton : NSObject {
     int _score;

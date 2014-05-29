@@ -14,6 +14,8 @@
     CCSlider *backgroundVolume, *effectsVolume;
     Singleton *singleton;
     CGPoint calibrationVector;
+    
+    CMMotionManager *_motionManager;
 }
 
 @end
