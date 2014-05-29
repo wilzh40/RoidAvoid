@@ -70,6 +70,8 @@ typedef NS_ENUM(NSUInteger, ControlScheme) {
 
 + (id)sharedManager;
 
+- (void)setDefaultVars;
+
 @property (readwrite,nonatomic) int score;
 @property (readwrite,nonatomic) bool firstGame;
 @property (readwrite,nonatomic) ControlScheme controlScheme;

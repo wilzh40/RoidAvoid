@@ -33,10 +33,15 @@
 
 - (void) setDefaultVars
 {
-    if ([[NSUserDefaults standardUserDefaults]objectForKey:@"ControlScheme"] == nil) {
-        //[[NSUserDefaults standardUserDefaults]setObject:[NSNumber numberWithInteger:kAccelerometer] forKey:@"ControlScheme"];
-    }
+    NSArray *vars = [NSArray arrayWithObjects:@"ControlScheme, FXVolume, BGVolume", nil];
+    NSArray *values = [NSArray arrayWithObjects:kTouch, [NSNumber numberWithFloat:0.5f], [NSNumber numberWithFloat:0.5f], nil];
+    for (int index = 1; index < [vars count]; index++) {
 
+    if ([[[NSUserDefaults standardUserDefaults]objectForKey:vars[index]]intValue] == 0) {
+        [[NSUserDefaults standardUserDefaults]setObject:values[index] forKey:vars[index]];
+        NSLog(@"Set Default Var: %@",vars[index]);
+    }
+    }
 
 }
 
