@@ -18,4 +18,5 @@
 
 @property (retain,nonatomic) CCParticleSystem *asteroidTrail;
 
+- (void) resetParticles;
 @end

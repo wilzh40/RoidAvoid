@@ -79,12 +79,22 @@
     _asteroidTrail = (CCParticleSystem *)[CCBReader load:@"AsteroidTrail"];
     
     // make the particle effect clean itself up, once it is completed
-    _asteroidTrail.autoRemoveOnFinish = TRUE;
+    //_asteroidTrail.autoRemoveOnFinish = TRUE;
+
     _asteroidTrail.particlePositionType = CCParticleSystemPositionTypeFree;
    // [_asteroidTrail setOpacity:0.5f];
-    [self.parent addChild:_asteroidTrail z:-1];
+    [[self physicsNode] addChild:_asteroidTrail z:-1];
     
 
 }
 
+- (void) resetParticles
+{
+    [_asteroidTrail stopSystem];
+    [_asteroidTrail resetSystem];
+    [_asteroidTrail stopAllActions];
+    [_asteroidTrail removeFromParentAndCleanup:YES];
+    [_asteroidTrail setVisible:NO];
+ //   [[self physicsNode]removeChild:_asteroidTrail cleanup:YES];
+}
 @end

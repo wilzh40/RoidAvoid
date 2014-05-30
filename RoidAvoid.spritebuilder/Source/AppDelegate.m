@@ -53,7 +53,7 @@
     //[cocos2dSetup setObject:kEAGLColorFormatRGB565 forKey:CCConfigPixelFormat];
     
 
-   // [cocos2dSetup setObject:@"YES" forKey:CCSetupShowDebugStats];
+    [cocos2dSetup setObject:@"YES" forKey:CCSetupShowDebugStats];
 
     [self setupCocos2dWithOptions:cocos2dSetup];
     [self setAudio];
@@ -67,9 +67,8 @@
 
 - (void) setAudio
 {
-    [[OALSimpleAudio sharedInstance] playBg:@"Menu_1.mp3" loop:YES];
     [[OALSimpleAudio sharedInstance] preloadEffect:@"thud.caf"];
- 
+  [[OALSimpleAudio sharedInstance] playBg:@"Game_1.mp3" loop:YES];
     [OALSimpleAudio sharedInstance].bgVolume = [[[NSUserDefaults standardUserDefaults]objectForKey:@"BGVolume"]floatValue];
     
     [OALSimpleAudio sharedInstance].effectsVolume = [[[NSUserDefaults standardUserDefaults]objectForKey:@"FXVolume"]floatValue];

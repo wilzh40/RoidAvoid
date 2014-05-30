@@ -28,6 +28,7 @@
 - (void) onExit
 {
     [_motionManager startAccelerometerUpdates];
+    [[OALSimpleAudio sharedInstance] playBg:@"Menu_1.m4a" loop:YES];
     [super onExit];
 	
 }
@@ -59,10 +60,12 @@
     _motionManager = [[CMMotionManager alloc]init];
     [_motionManager startAccelerometerUpdates];
 
+    [[OALSimpleAudio sharedInstance] playBg:@"Menu_1.mp3" loop:YES];
+    
     [self displayHighScore];
     [self setPlanet];
     [self setHero];
-    [self setStars];
+   // [self setStars];
     NSLog(@"Setup Scene");
     
 }
@@ -193,18 +196,15 @@
         n.asteroidTrail.position = n.position;
         [n.asteroidTrail setScale:n.scale];
         //[n.asteroidTrail setOpacity:0.0f];
-
     }
 }
 
 #pragma mark Collision
 
-- (void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair planet:(CCNode *)planet asteroid:(CCNode *)asteroid
+- (void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair planet:(CCNode *)planet asteroid:(Asteroid *)asteroid
 {
     //Remove Trail    [asteroid.asteroidTrail setOpacity:0.0f];
-    Asteroid *asteroidBody = (Asteroid*)asteroid;
-    [asteroidBody.asteroidTrail resetSystem];
-    [self.physicsNode removeChild:asteroidBody.asteroidTrail];
+    [asteroid resetParticles];
     
     
     //Add Crater

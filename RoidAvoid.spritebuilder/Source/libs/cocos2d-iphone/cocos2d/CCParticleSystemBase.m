@@ -481,6 +481,7 @@
 		_CCParticle *p = &_particles[_particleIdx];
 		p->timeToLive = 0;
 	}
+    
 
 }
 
