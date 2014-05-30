@@ -20,9 +20,9 @@
     
     //Resets all the variables to start a new game
     
-    if  ((singleton.firstGame == YES)) {
+   // if  ((singleton.firstGame == YES)) {
         [self setupScene];
-    }
+   // }
 }
 
 - (void) onExit
@@ -85,7 +85,7 @@
 {
     if (hero == Nil) {
         hero = (Hero *)[CCBReader load:@"Hero"];
-        [physicsNode addChild:hero z:-100.0f];
+        [physicsNode addChild:hero z:5];
     }
     heroAngle = HERO_INITIAL_ANGLE;
     [self updateHeroToRotation];
@@ -192,21 +192,24 @@
     for (Asteroid *n in asteroids){
         n.asteroidTrail.position = n.position;
         [n.asteroidTrail setScale:n.scale];
+        //[n.asteroidTrail setOpacity:0.0f];
+
     }
 }
 
 #pragma mark Collision
 
-- (void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair planet:(CCNode *)planet asteroid:(Asteroid *)asteroid
+- (void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair planet:(CCNode *)planet asteroid:(CCNode *)asteroid
 {
+    //Remove Trail    [asteroid.asteroidTrail setOpacity:0.0f];
+    Asteroid *asteroidBody = (Asteroid*)asteroid;
+    [asteroidBody.asteroidTrail resetSystem];
+    [self.physicsNode removeChild:asteroidBody.asteroidTrail];
+    
+    
     //Add Crater
     
     CCNode *crater = [CCBReader load:@"Crater"];
-//    CGPoint collisionVelocity = asteroid.physicsBody.velocity;
-//    float collisionAngle = ccpToAngle(collisionVelocity);
-//    CGPoint collisionOffset = ccpMult(ccp(cosf(collisionAngle),sinf(collisionAngle)),0.5f);
-//    crater.rotation = (collisionAngle+3.14159/4)/3.14159*180;
-//    crater.position= ccpAdd(collisionOffset, ccpMult(collisionVelocity, 1));
     
     [physicsNode addChild:crater z:10];
     
@@ -217,11 +220,11 @@
     [crater runAction:[CCActionSequence actionWithArray:@[fadeOut,action]]];
     
     //Play Sound
+    
     [[OALSimpleAudio sharedInstance]playEffect:@"thud.caf"];
-    [self.physicsNode removeChild:asteroid.asteroidTrail];
+
+
     [asteroids removeObject:asteroid];
-    
-    
     [physicsNode removeChild:asteroid cleanup:YES];
 }
 
@@ -358,7 +361,7 @@
 //    
 //    }
 //    else if (newHeroAngle - tiltAngle < -tolerance || newHeroAngle - tiltAngle > halfCircle){
-//        self->heroMovement = MOVE_LEFT;
+//        self->heroMovement = MOVE_LEFT
 //        ((CCSprite *)hero).flipX = FALSE;
     
    // else self->heroMovement = MOVE_STILL;

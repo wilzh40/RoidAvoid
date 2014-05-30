@@ -53,28 +53,28 @@
 			<key>points</key>
 			<array>
 				<array>
-					<real>3.336045503616333</real>
-					<real>48.176731109619141</real>
+					<real>12.5859375</real>
+					<real>31.96484375</real>
 				</array>
 				<array>
-					<real>8.708125114440918</real>
-					<real>4.7700896263122559</real>
+					<real>13.30078125</real>
+					<real>13.16015625</real>
 				</array>
 				<array>
-					<real>37.535053253173828</real>
-					<real>0.80567991733551025</real>
+					<real>27.44921875</real>
+					<real>7.4453125</real>
 				</array>
 				<array>
-					<real>49.230377197265625</real>
-					<real>11.717602729797363</real>
+					<real>31.87890625</real>
+					<real>16.64453125</real>
 				</array>
 				<array>
-					<real>30.275932312011719</real>
-					<real>57.020675659179688</real>
+					<real>30.390625</real>
+					<real>31.4765625</real>
 				</array>
 				<array>
-					<real>12.654664993286133</real>
-					<real>60.688617706298828</real>
+					<real>23.19140625</real>
+					<real>45.13671875</real>
 				</array>
 			</array>
 		</dict>

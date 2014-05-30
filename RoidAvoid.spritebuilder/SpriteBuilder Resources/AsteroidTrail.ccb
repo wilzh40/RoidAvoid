@@ -105,7 +105,7 @@
 				<key>type</key>
 				<string>Float</string>
 				<key>value</key>
-				<real>80</real>
+				<real>50</real>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -113,7 +113,7 @@
 				<key>type</key>
 				<string>Float</string>
 				<key>value</key>
-				<real>10</real>
+				<real>-1</real>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -121,7 +121,7 @@
 				<key>type</key>
 				<string>Integer</string>
 				<key>value</key>
-				<integer>300</integer>
+				<integer>10000</integer>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -218,10 +218,10 @@
 				<key>value</key>
 				<array>
 					<array>
-						<real>0.0</real>
-						<real>0.0</real>
-						<real>0.0</real>
-						<real>255</real>
+						<real>0.45494034886360168</real>
+						<real>0.041610792279243469</real>
+						<real>0.035254720598459244</real>
+						<real>1</real>
 					</array>
 					<array>
 						<real>0.0</real>

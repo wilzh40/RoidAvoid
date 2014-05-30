@@ -16,6 +16,6 @@
     CCParticleSystem *_asteroidTrail;
 }
 
-@property (readwrite,nonatomic) CCParticleSystem *asteroidTrail;
+@property (retain,nonatomic) CCParticleSystem *asteroidTrail;
 
 @end
