@@ -95,15 +95,19 @@
 							<string>Credits:
 
 Programming
-Wilson zhao (wilzh40@gmail.com)
+Wilson Zhao (wilzh40@gmail.com)
 Paul MERILL (pbm@pbm.com)
 
 Graphics
 
 Natalie Lee
+Annette Cheng
 Joshua Pham
 
 Music
+
+Junsong Kim
+147 and 148
 
 "Mining by Moonlight"
  Kevin MacLeod (incompetech.com) 
@@ -146,7 +150,7 @@ Thanks for playing!
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>12</real>
+							<real>14</real>
 							<integer>0</integer>
 						</array>
 					</dict>

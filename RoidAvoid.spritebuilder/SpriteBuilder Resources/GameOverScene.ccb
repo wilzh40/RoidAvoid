@@ -410,8 +410,6 @@
 						<string>ccbResources/ccbParticleFire.png</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -1115,7 +1113,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>20</real>
+							<real>24</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1245,6 +1243,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

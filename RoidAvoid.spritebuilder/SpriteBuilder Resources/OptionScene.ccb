@@ -105,9 +105,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<real>0.84916365146636963</real>
-							<real>0.5678325891494751</real>
-							<real>0.27378806471824646</real>
+							<real>1</real>
+							<real>0.01937486045062542</real>
+							<real>0.36745131015777588</real>
 							<real>1</real>
 						</array>
 					</dict>
@@ -118,9 +118,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<real>0.84916365146636963</real>
-							<real>0.22949506342411041</real>
-							<real>0.22806070744991302</real>
+							<real>0.70738786458969116</real>
+							<real>0.53165668249130249</real>
+							<real>0.27168551087379456</real>
 							<real>1</real>
 						</array>
 					</dict>
@@ -476,7 +476,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.5</real>
+							<real>0.44999998807907104</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -500,8 +500,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.80000001192092896</real>
+							<real>0.80000001192092896</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1516,7 +1516,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.60000002384185791</real>
+							<real>0.55000001192092896</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -1540,8 +1540,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.80000001192092896</real>
+							<real>0.80000001192092896</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1792,6 +1792,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -2100,8 +2102,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

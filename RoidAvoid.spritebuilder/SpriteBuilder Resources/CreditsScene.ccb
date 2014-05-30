@@ -105,9 +105,9 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<real>0.20999999344348907</real>
-							<real>0.64999997615814209</real>
-							<real>0.87000000476837158</real>
+							<real>0.4435197114944458</real>
+							<real>1</real>
+							<real>0.69101029634475708</real>
 							<real>1</real>
 						</array>
 					</dict>
@@ -970,8 +970,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
