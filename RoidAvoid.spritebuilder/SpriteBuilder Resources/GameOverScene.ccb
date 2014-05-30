@@ -303,7 +303,7 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>90</real>
+							<real>0.0</real>
 							<real>10</real>
 						</array>
 					</dict>
@@ -397,8 +397,8 @@
 						<string>FloatVar</string>
 						<key>value</key>
 						<array>
-							<real>90</real>
-							<real>100</real>
+							<real>0.0</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -410,6 +410,8 @@
 						<string>ccbResources/ccbParticleFire.png</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
