@@ -17,6 +17,7 @@
 		7760396019314DE80054E6FD /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760395F19314DE80054E6FD /* GameScene.m */; };
 		77603970193153AC0054E6FD /* Hero.m in Sources */ = {isa = PBXBuildFile; fileRef = 7760396F193153AC0054E6FD /* Hero.m */; };
 		77603973193153B40054E6FD /* Asteroid.m in Sources */ = {isa = PBXBuildFile; fileRef = 77603972193153B40054E6FD /* Asteroid.m */; };
+		779FB0C919398EED0060CFC7 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 779FB0C819398EED0060CFC7 /* GLKit.framework */; };
 		77B7DEBF1932298F00562866 /* thud.caf in Resources */ = {isa = PBXBuildFile; fileRef = 77B7DEBE1932298F00562866 /* thud.caf */; };
 		77B7DECD193437D600562866 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77B7DECC193437D600562866 /* Images.xcassets */; };
 		77B7DECF193437F800562866 /* RoidAvoidIcons in Resources */ = {isa = PBXBuildFile; fileRef = 77B7DECE193437F800562866 /* RoidAvoidIcons */; };
@@ -53,18 +54,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		779FB0CA1939908D0060CFC7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B7378940180761A80076A88C /* cocos2d-ios.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5018F24C0DFDEAC400C013A5;
+			remoteInfo = cocos2d;
+		};
 		B737894A180761A90076A88C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B7378940180761A80076A88C /* cocos2d-ios.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 5018F24D0DFDEAC400C013A5;
-			remoteInfo = cocos2d;
-		};
-		B7378988180764180076A88C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B7378940180761A80076A88C /* cocos2d-ios.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 5018F24C0DFDEAC400C013A5;
 			remoteInfo = cocos2d;
 		};
 /* End PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		7760396F193153AC0054E6FD /* Hero.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hero.m; sourceTree = "<group>"; };
 		77603971193153B40054E6FD /* Asteroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asteroid.h; sourceTree = "<group>"; };
 		77603972193153B40054E6FD /* Asteroid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asteroid.m; sourceTree = "<group>"; };
+		779FB0C819398EED0060CFC7 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		77B7DEBE1932298F00562866 /* thud.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = thud.caf; path = "Published-iOS/Sounds/thud.caf"; sourceTree = "<group>"; };
 		77B7DECC193437D600562866 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RoidAvoid/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		77B7DECE193437F800562866 /* RoidAvoidIcons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RoidAvoidIcons; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				779FB0C919398EED0060CFC7 /* GLKit.framework in Frameworks */,
 				774C85531935AEB900DB8174 /* CoreMotion.framework in Frameworks */,
 				B737898A1807642B0076A88C /* libcocos2d.a in Frameworks */,
 				B77F1B3217B978D7009739AE /* QuartzCore.framework in Frameworks */,
@@ -268,6 +271,7 @@
 		B77F1B3017B978D7009739AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				779FB0C819398EED0060CFC7 /* GLKit.framework */,
 				774C85521935AEB900DB8174 /* CoreMotion.framework */,
 				B7B3713D180358F1007369CC /* libObjectiveChipmunk.a */,
 				B77F1B3117B978D7009739AE /* QuartzCore.framework */,
@@ -323,7 +327,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				B7378989180764180076A88C /* PBXTargetDependency */,
+				779FB0CB1939908D0060CFC7 /* PBXTargetDependency */,
 			);
 			name = RoidAvoid;
 			productName = Example;
@@ -435,10 +439,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B7378989180764180076A88C /* PBXTargetDependency */ = {
+		779FB0CB1939908D0060CFC7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = cocos2d;
-			targetProxy = B7378988180764180076A88C /* PBXContainerItemProxy */;
+			targetProxy = 779FB0CA1939908D0060CFC7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

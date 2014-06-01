@@ -14,15 +14,15 @@
 {
     singleton = [Singleton sharedManager];
     winSize = [[CCDirector sharedDirector]viewSize];
-
+    
 	
 	[super onEnter];
     
     //Resets all the variables to start a new game
     
-   // if  ((singleton.firstGame == YES)) {
-        [self setupScene];
-   // }
+    // if  ((singleton.firstGame == YES)) {
+    [self setupScene];
+    // }
 }
 
 - (void) onExit
@@ -39,7 +39,7 @@
 {
     self->heroMovement = MOVE_STILL;
     if (singleton.controlScheme == kTouch) {
-    self.userInteractionEnabled = TRUE;
+        self.userInteractionEnabled = TRUE;
     }
     
     self.multipleTouchEnabled = TRUE;
@@ -59,13 +59,13 @@
     
     _motionManager = [[CMMotionManager alloc]init];
     [_motionManager startAccelerometerUpdates];
-
+    
     [[OALSimpleAudio sharedInstance] playBg:@"Menu_1.mp3" loop:YES];
     
     [self displayHighScore];
     [self setPlanet];
     [self setHero];
-   // [self setStars];
+    // [self setStars];
     NSLog(@"Setup Scene");
     
 }
@@ -99,7 +99,7 @@
     CCPositionType type;
     type.xUnit = CCPositionUnitNormalized;
     type.yUnit = CCPositionUnitNormalized;
-
+    
     for (int i = 0; i < STARS_COUNT; i++) {
         CCNode *star = [CCBReader load:@"Star"];
         CGPoint position = CGPointMake(frandom_range(0.0f, 1.0f), frandom_range(0.0f, 1.0f));
@@ -135,6 +135,8 @@
     [self moveHero:dt];
     [self updateParticles];
     [self updateAccelerometer];
+    
+    [singleton chooseEvent:kWildCard];
 }
 
 - (void) applyGravity:(float) dt
@@ -157,26 +159,66 @@
 - (void) genAsteroids
 {
     curTime = CACurrentMediaTime();
+    
     if (curTime > nextFallTime) {
-        //Sets Next Fall time and interval, procedurally decrease by _score
-        
-        float fallIntervalMin = 3.8 - log10f(singleton.score);
-        if (fallIntervalMin < 0)
-            fallIntervalMin = 0.15;
-        float fallIntervalMax = fallIntervalMin * 1.5;
-        float radius = ASTEROID_SPAWN_RADIUS;
-        
-        fallInterval = fabsf(frandom_range(fallIntervalMin,fallIntervalMax));
-        
-        //NSLog(@"min %f max %f interval %f",fallIntervalMin, fallIntervalMax,fallInterval);
-        
-        nextFallTime = fallInterval + curTime;
-        //singleton.asteroidX = frandom_range(-winSize.width/4, winSize.width/4);
-        //loat randomY = frandom_range(winSize.height, winSize.height + logf(_score));
-        //CGPoint startingPosition = ccp(CCRANDOM_ON_UNIT_CIRCLE().x*radius+winSize.width/2,CCRANDOM_IN_UNIT_CIRCLE().x*radius+winSize.height/2);
-        CGPoint circle = ccpMult(CCRANDOM_ON_UNIT_CIRCLE(), radius);
-        CGPoint startingPosition = ccp(circle.x,circle.y);
-        [self genAsteroid:startingPosition];
+        if (singleton.asteroidEvent == kNormal) {
+            //Sets Next Fall time and interval, procedurally decrease by _score
+            
+            float fallIntervalMin = 3.8 - log10f(singleton.score);
+            if (fallIntervalMin < 0)
+                fallIntervalMin = 0.15;
+            float fallIntervalMax = fallIntervalMin * 1.5;
+            float radius = ASTEROID_SPAWN_RADIUS;
+            
+            fallInterval = fabsf(frandom_range(fallIntervalMin,fallIntervalMax));
+            
+            //NSLog(@"min %f max %f interval %f",fallIntervalMin, fallIntervalMax,fallInterval);
+            nextFallTime = fallInterval + curTime;
+            //singleton.asteroidX = frandom_range(-winSize.width/4, winSize.width/4);
+            //float randomY = frandom_range(winSize.height, winSize.height + logf(_score));
+            //CGPoint startingPosition = ccp(CCRANDOM_ON_UNIT_CIRCLE().x*radius+winSize.width/2,CCRANDOM_IN_UNIT_CIRCLE().x*radius+winSize.height/2);
+            CGPoint circle = ccpMult(CCRANDOM_ON_UNIT_CIRCLE(), radius);
+            CGPoint startingPosition = ccp(circle.x,circle.y);
+            [self genAsteroid:startingPosition];
+        }
+        if (singleton.asteroidEvent == kShower) {
+            
+            float fallIntervalMin = 0.5 - log10f(singleton.score);
+            if (fallIntervalMin < 0)
+                fallIntervalMin = 0.05;
+            float fallIntervalMax = fallIntervalMin * 1.2;
+            float radius = ASTEROID_SPAWN_RADIUS;
+            
+            fallInterval = fabsf(frandom_range(fallIntervalMin,fallIntervalMax));
+            nextFallTime = curTime + 3.0f;
+            
+            int direction = random_range(1, 4);
+            int increment = random_range(8, 12);
+            CGPoint startingPosition;
+            for (int i = 0; i<increment; i++) {
+                switch (direction) {
+                    case 1:
+                        startingPosition = ccp(winSize.width/increment*i, ASTEROID_SPAWN_RADIUS);
+                        break;
+                    case 2:
+                        startingPosition = ccp(winSize.width/increment*i, -ASTEROID_SPAWN_RADIUS);
+                        break;
+                    case 3:
+                        startingPosition = ccp(-ASTEROID_SPAWN_RADIUS, winSize.height/increment*i);
+                        break;
+                    case 4:
+                        startingPosition = ccp(ASTEROID_SPAWN_RADIUS, winSize.height/increment*i);
+                        break;
+                    default:
+                        break;
+                }
+                [self genAsteroid:startingPosition];
+            }
+            
+            [singleton chooseEvent:kNormal];
+           
+
+        }
     }
 }
 
@@ -203,9 +245,8 @@
 
 - (void)ccPhysicsCollisionPostSolve:(CCPhysicsCollisionPair *)pair planet:(CCNode *)planet asteroid:(Asteroid *)asteroid
 {
-    //Remove Trail    [asteroid.asteroidTrail setOpacity:0.0f];
+    //Remove Trail
     [asteroid resetParticles];
-    
     
     //Add Crater
     
@@ -214,7 +255,7 @@
     [physicsNode addChild:crater z:10];
     
     [self positionNodeOnEarth:crater atAngle:ccpToAngle(asteroid.position) atHeight:CRATER_STAND_HEIGHT];
-
+    
     CCActionFiniteTime *fadeOut = [CCActionFadeOut actionWithDuration:1.5f];
     CCActionRemove *action = [CCActionRemove action];
     [crater runAction:[CCActionSequence actionWithArray:@[fadeOut,action]]];
@@ -222,8 +263,8 @@
     //Play Sound
     
     [[OALSimpleAudio sharedInstance]playEffect:@"thud.caf"];
-
-
+    
+    
     [asteroids removeObject:asteroid];
     [physicsNode removeChild:asteroid cleanup:YES];
 }
@@ -305,68 +346,63 @@
     self->heroMovement = MOVE_STILL;
 }
 
-//Gets the 3d dotproduct
-#define Vec3DotProduct(v11,v12,v13,v21,v22,v23)
-//Gets the 3d Scalar
-#define Sca3(x,y,z) pow((x*x+y*y+z*z),1/3)
-
 - (void) updateAccelerometer
 {
     if (singleton.controlScheme == kAccelerometer) {
-
-    float unitCircle = 360;
-    float halfCircle = 180;
-    
-    CGPoint calibrationVector = singleton.calibrationVector;
-    CMAccelerometerData *accelerometerData = _motionManager.accelerometerData;
-    CMAcceleration acceleration = accelerometerData.acceleration;
-    float  tiltAngle = (-ccpToAngle( ccpSub( ccp( acceleration.y, acceleration.x ), calibrationVector )));
-    float tolerance = ACCELEROMETER_TOLERANCE;
-
-    //Converted radians to degrees
-    
-    int  newHeroAngle = heroAngle/3.14159*180;
-    int  newTiltAngle = tiltAngle/3.14159*180;
-    
-    //Scaled it from -180 to 180 + 2*PI*N -> 0 to 360
-    
-    newTiltAngle = newTiltAngle < 0 ? newTiltAngle + unitCircle*2 : newTiltAngle;
-    newHeroAngle = (newHeroAngle < 0 ? newHeroAngle + unitCircle*2 : newHeroAngle);
-    float angleDiff = newHeroAngle % 360 - newTiltAngle % 360;
-    
-    //If the angle difference isn't high enough then the dinosaur stays still
-    
-    if ((int)fabs(angleDiff)%360 < tolerance ) {
-        self->heroMovement = MOVE_STILL;
-    }
-    
-    //Code for looping the dinosaur around the circle when the angle difference is high but the distance is close
-    
-    else if ((angleDiff > 0 && angleDiff < halfCircle) || (angleDiff < 0 && angleDiff < -halfCircle)) {
-        self->heroMovement = MOVE_RIGHT;
-        ((CCSprite *)hero).flipX = TRUE;
-    }
-    else {
-        self->heroMovement = MOVE_LEFT;
-        ((CCSprite *)hero).flipX = FALSE;
-    }
-    
-//    else if (newHeroAngle - newTiltAngle < 0 || newHeroAngle - newTiltAngle > halfCircle) {
-//        self->heroMovement = MOVE_LEFT;
-//        ((CCSprite *)hero).flipX = FALSE;
-//    }
-//    if (newHeroAngle - tiltAngle > tolerance || newHeroAngle - tiltAngle < -halfCircle) {
-//        self->heroMovement = MOVE_RIGHT;
-//        ((CCSprite *)hero).flipX = TRUE;
-//    
-//    }
-//    else if (newHeroAngle - tiltAngle < -tolerance || newHeroAngle - tiltAngle > halfCircle){
-//        self->heroMovement = MOVE_LEFT
-//        ((CCSprite *)hero).flipX = FALSE;
-    
-   // else self->heroMovement = MOVE_STILL;
-    
-    NSLog(@"%i,%i", newTiltAngle, newHeroAngle);
+        
+        float unitCircle = 360;
+        float halfCircle = 180;
+        
+        CGPoint calibrationVector = singleton.calibrationVector;
+        CMAccelerometerData *accelerometerData = _motionManager.accelerometerData;
+        CMAcceleration acceleration = accelerometerData.acceleration;
+        float  tiltAngle = (-ccpToAngle( ccpSub( ccp( acceleration.y, acceleration.x ), calibrationVector )));
+        float tolerance = ACCELEROMETER_TOLERANCE;
+        
+        //Converted radians to degrees
+        
+        int  newHeroAngle = heroAngle/3.14159*180;
+        int  newTiltAngle = tiltAngle/3.14159*180;
+        
+        //Scaled it from -180 to 180 + 2*PI*N -> 0 to 360
+        
+        newTiltAngle = newTiltAngle < 0 ? newTiltAngle + unitCircle*2 : newTiltAngle;
+        newHeroAngle = (newHeroAngle < 0 ? newHeroAngle + unitCircle*2 : newHeroAngle);
+        float angleDiff = newHeroAngle % 360 - newTiltAngle % 360;
+        
+        //If the angle difference isn't high enough then the dinosaur stays still
+        
+        if ((int)fabs(angleDiff)%360 < tolerance ) {
+            self->heroMovement = MOVE_STILL;
+        }
+        
+        //Code for looping the dinosaur around the circle when the angle difference is high but the distance is close
+        
+        else if ((angleDiff > 0 && angleDiff < halfCircle) || (angleDiff < 0 && angleDiff < -halfCircle)) {
+            self->heroMovement = MOVE_RIGHT;
+            ((CCSprite *)hero).flipX = TRUE;
+        }
+        else {
+            self->heroMovement = MOVE_LEFT;
+            ((CCSprite *)hero).flipX = FALSE;
+        }
+        
+        //    else if (newHeroAngle - newTiltAngle < 0 || newHeroAngle - newTiltAngle > halfCircle) {
+        //        self->heroMovement = MOVE_LEFT;
+        //        ((CCSprite *)hero).flipX = FALSE;
+        //    }
+        //    if (newHeroAngle - tiltAngle > tolerance || newHeroAngle - tiltAngle < -halfCircle) {
+        //        self->heroMovement = MOVE_RIGHT;
+        //        ((CCSprite *)hero).flipX = TRUE;
+        //
+        //    }
+        //    else if (newHeroAngle - tiltAngle < -tolerance || newHeroAngle - tiltAngle > halfCircle){
+        //        self->heroMovement = MOVE_LEFT
+        //        ((CCSprite *)hero).flipX = FALSE;
+        
+        // else self->heroMovement = MOVE_STILL;
+        
+        NSLog(@"%i,%i", newTiltAngle, newHeroAngle);
     }
 }
 

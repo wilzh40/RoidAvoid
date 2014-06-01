@@ -56,10 +56,20 @@ typedef NS_ENUM(NSUInteger, ControlScheme) {
     kAccelerometer = 1
 };
 
+typedef NS_ENUM(NSUInteger, AsteroidEvent) {
+    kNormal = 0,
+    kShower = 1,
+    
+    kApocalpyse = 2,
+    
+    kWildCard = 3
+};
+
 
 @interface Singleton : NSObject {
     int _score;
     bool _firstGame;
+    bool _switched;
     
     ControlScheme _controlScheme;
     
@@ -71,10 +81,13 @@ typedef NS_ENUM(NSUInteger, ControlScheme) {
 + (id)sharedManager;
 
 - (void)setDefaultVars;
+- (void)chooseEvent:(AsteroidEvent)event;
 
 @property (readwrite,nonatomic) int score;
 @property (readwrite,nonatomic) bool firstGame;
+
 @property (readwrite,nonatomic) ControlScheme controlScheme;
+@property (readwrite,nonatomic) AsteroidEvent asteroidEvent;
 
 @property (readwrite,nonatomic) CGPoint asteroidPos;
 @property (readwrite,nonatomic) CGPoint calibrationVector;

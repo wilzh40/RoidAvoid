@@ -29,7 +29,7 @@
 	// First you list the categories (strings) that the object belongs to.
 	self.physicsBody.collisionCategories = @[@"asteroid"];
 	// Then you list which categories its allowed to collide with.
-	self.physicsBody.collisionMask = @[@"hero", @"planet",@"boundary",@"asteroid"];
+	self.physicsBody.collisionMask = @[@"hero", @"planet",@"boundary"];
 
     if (frandom_range(0.0, 1.0) < ASTEROID_OUTLIER_PROB) {
         [self setVarsForProfile:@"outlier"
@@ -77,12 +77,11 @@
 - (void) addParticles
 {
     _asteroidTrail = (CCParticleSystem *)[CCBReader load:@"AsteroidTrail"];
-    
     // make the particle effect clean itself up, once it is completed
     //_asteroidTrail.autoRemoveOnFinish = TRUE;
 
     _asteroidTrail.particlePositionType = CCParticleSystemPositionTypeFree;
-   // [_asteroidTrail setOpacity:0.5f];
+    _asteroidTrail.opacity = 0.5f;
     [[self physicsNode] addChild:_asteroidTrail z:-1];
     
 
@@ -94,7 +93,9 @@
     [_asteroidTrail resetSystem];
     [_asteroidTrail stopAllActions];
     [_asteroidTrail removeFromParentAndCleanup:YES];
+      _asteroidTrail = nil;
     [_asteroidTrail setVisible:NO];
+
  //   [[self physicsNode]removeChild:_asteroidTrail cleanup:YES];
 }
 @end

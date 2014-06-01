@@ -30,12 +30,12 @@ Update to RoidAvoid v1.1
 
 Graphics
 
-A small particle trail for each asteroid
+A small particle trail for each asteroid ✓
 Stars flashing randomly
 or Stars flashing, synched to the music (same with the planet!)
 A death animation
 A game over screen in which the background is the blurred GameScene
-A glow around the whole planet
+A glow around the whole planet 
 
 
 Gameplay
@@ -44,8 +44,8 @@ Meteor Showers
 An additional gravity source
 An option to see the gravity field??
 Better difficulty scale
-Adding acceleration and deceleration??
-Changing the control scheme to something more fluid
+Adding acceleration and deceleration?? 
+Changing the control scheme to something more fluid ✓
 
 Music
 

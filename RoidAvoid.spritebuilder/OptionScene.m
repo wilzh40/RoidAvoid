@@ -70,7 +70,6 @@
 - (void) setControlScheme
 {
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"ControlScheme"]intValue] == kTouch) {
-        NSLog(@"%i,%i",[[[NSUserDefaults standardUserDefaults] objectForKey:@"ControlScheme"]intValue],kTouch);
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:kAccelerometer] forKey:@"ControlScheme"];
        [controlScheme setTitle:[NSString stringWithFormat:@"Control Scheme: Accelerometer"]];
     

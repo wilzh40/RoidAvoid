@@ -197,9 +197,9 @@
 				<key>value</key>
 				<array>
 					<array>
-						<real>0.74812865257263184</real>
-						<real>0.75999999046325684</real>
-						<real>0.71889245510101318</real>
+						<real>0.98501557111740112</real>
+						<real>1</real>
+						<real>0.951896071434021</real>
 						<real>1</real>
 					</array>
 					<array>
@@ -218,9 +218,9 @@
 				<key>value</key>
 				<array>
 					<array>
-						<real>0.45494034886360168</real>
-						<real>0.041610792279243469</real>
-						<real>0.035254720598459244</real>
+						<real>0.0</real>
+						<real>0.0</real>
+						<real>0.0</real>
 						<real>1</real>
 					</array>
 					<array>
@@ -239,7 +239,7 @@
 				<key>value</key>
 				<array>
 					<integer>1</integer>
-					<integer>1</integer>
+					<integer>771</integer>
 				</array>
 			</dict>
 			<dict>
