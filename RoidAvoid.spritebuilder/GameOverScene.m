@@ -44,7 +44,7 @@
     CCScene *mainMenu = [CCBReader loadAsScene:@"MainScene"];
     
     [[CCDirector sharedDirector]replaceScene:mainMenu withTransition:[CCTransition transitionFadeWithDuration:0.5f]];
-    
+    [[OALSimpleAudio sharedInstance] playBg:@"Synth.mp3" loop:YES];
     singleton.firstGame = YES;
 }
 

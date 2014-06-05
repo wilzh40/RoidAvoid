@@ -60,7 +60,7 @@
     _motionManager = [[CMMotionManager alloc]init];
     [_motionManager startAccelerometerUpdates];
     
-    [[OALSimpleAudio sharedInstance] playBg:@"Menu_1.mp3" loop:YES];
+    [[OALSimpleAudio sharedInstance] playBg:@"Piano.m4a" loop:YES];
     
     [self displayHighScore];
     [self setPlanet];
@@ -110,18 +110,6 @@
     bgColor.zOrder = -1001.0f;
 }
 
-- (void) updateHeroToRotation
-{
-    [self positionNodeOnEarth:hero atAngle:heroAngle atHeight:HERO_STAND_HEIGHT];
-}
-
-- (void) positionNodeOnEarth:(CCNode *)node atAngle:(float)angle atHeight:(float)height
-{
-    CGPoint position = CGPointMake(cos(angle), sin(angle));
-    position = ccpMult(position, height);
-    node.position = position;
-    node.rotation = 90 - angle / 3.14f * 180.0f;
-}
 
 #pragma mark Scheduler
 - (void) update:(CCTime) dt
@@ -137,6 +125,19 @@
     [self updateAccelerometer];
     
     [singleton chooseEvent:kWildCard];
+}
+
+- (void) updateHeroToRotation
+{
+    [self positionNodeOnEarth:hero atAngle:heroAngle atHeight:HERO_STAND_HEIGHT];
+}
+
+- (void) positionNodeOnEarth:(CCNode *)node atAngle:(float)angle atHeight:(float)height
+{
+    CGPoint position = CGPointMake(cos(angle), sin(angle));
+    position = ccpMult(position, height);
+    node.position = position;
+    node.rotation = 90 - angle / 3.14f * 180.0f;
 }
 
 - (void) applyGravity:(float) dt
@@ -216,8 +217,8 @@
             }
             
             [singleton chooseEvent:kNormal];
-           
-
+            
+            
         }
     }
 }
@@ -251,7 +252,6 @@
     //Add Crater
     
     CCNode *crater = [CCBReader load:@"Crater"];
-    
     [physicsNode addChild:crater z:10];
     
     [self positionNodeOnEarth:crater atAngle:ccpToAngle(asteroid.position) atHeight:CRATER_STAND_HEIGHT];
@@ -266,6 +266,7 @@
     
     
     [asteroids removeObject:asteroid];
+    [asteroid.asteroidTrail resetSystem];
     [physicsNode removeChild:asteroid cleanup:YES];
 }
 
@@ -331,13 +332,13 @@
 
 - (void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    // when touches end, release the catapult
+
     [self releaseMovement];
 }
 
 - (void) touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    // when touches are cancelled, release the catapult
+   
     [self releaseMovement];
 }
 
@@ -402,7 +403,7 @@
         
         // else self->heroMovement = MOVE_STILL;
         
-        NSLog(@"%i,%i", newTiltAngle, newHeroAngle);
+        //NSLog(@"%i,%i", newTiltAngle, newHeroAngle);
     }
 }
 

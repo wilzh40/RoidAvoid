@@ -27,6 +27,7 @@
 
 #import "AppDelegate.h"
 #import "CCBuilderReader.h"
+#import "Singleton.h"
 
 @implementation AppController
 
@@ -56,7 +57,9 @@
     [cocos2dSetup setObject:@"YES" forKey:CCSetupShowDebugStats];
 
     [self setupCocos2dWithOptions:cocos2dSetup];
+    [self setDefaultVars];
     [self setAudio];
+
     return YES;
 }
 
@@ -68,11 +71,22 @@
 - (void) setAudio
 {
     [[OALSimpleAudio sharedInstance] preloadEffect:@"thud.caf"];
-  [[OALSimpleAudio sharedInstance] playBg:@"Game_1.mp3" loop:YES];
+    [[OALSimpleAudio sharedInstance] playBg:@"Synth.mp3" loop:YES];
     [OALSimpleAudio sharedInstance].bgVolume = [[[NSUserDefaults standardUserDefaults]objectForKey:@"BGVolume"]floatValue];
     
     [OALSimpleAudio sharedInstance].effectsVolume = [[[NSUserDefaults standardUserDefaults]objectForKey:@"FXVolume"]floatValue];
     
+}
+
+- (void) setDefaultVars
+{
+    
+    Singleton *singleton = [Singleton sharedManager];
+    [singleton setDefaultVars];
+    singleton.firstGame = TRUE;
+    singleton.controlScheme = [[[NSUserDefaults standardUserDefaults] objectForKey:@"ControlScheme"]intValue];
+    
+
 }
 
 @end

@@ -62,7 +62,7 @@
     CMAccelerometerData *accelerometerData = _motionManager.accelerometerData;
     CMAcceleration acceleration = accelerometerData.acceleration;
 
-    singleton.calibrationVector = ccp(acceleration.x,acceleration.y);
+    singleton.calibrationVector = ccp(acceleration.y,acceleration.x);
     NSLog(@"Set Calibration Vector:%f,%f",singleton.calibrationVector.y,singleton.calibrationVector.x);
 
 }
@@ -84,7 +84,7 @@
 
 - (void)valueChanged1:(CCSlider *)sender
 {
-    // Change volume of your   n nh                                                                                                                                  sounds
+    // Change volume of your sounds
     [[OALSimpleAudio sharedInstance] setEffectsVolume:sender.sliderValue];
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:sender.sliderValue] forKey:@"FXVolume"];

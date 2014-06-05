@@ -34,13 +34,12 @@
 
 - (void) setDefaultVars
 {
-    NSArray *vars = [NSArray arrayWithObjects:@"ControlScheme, FXVolume, BGVolume", nil];
-    NSArray *values = [NSArray arrayWithObjects:kTouch, [NSNumber numberWithFloat:0.5f], [NSNumber numberWithFloat:0.5f], nil];
+    NSMutableArray *vars = [NSMutableArray arrayWithObjects:@"ControlScheme", @"FXVolume", @"BGVolume", nil];
+    NSMutableArray *values = [NSMutableArray arrayWithObjects:[NSNumber numberWithInteger:kNormal], [NSNumber numberWithFloat:0.5f], [NSNumber numberWithFloat:0.5f], nil];
     for (int index = 1; index < [vars count]; index++) {
-        
-        if ([[[NSUserDefaults standardUserDefaults]objectForKey:vars[index]]intValue] == 0) {
-            [[NSUserDefaults standardUserDefaults]setObject:values[index] forKey:vars[index]];
-            NSLog(@"Set Default Var: %@",vars[index]);
+            if ([[NSUserDefaults standardUserDefaults]objectForKey:vars[index]] == nil) {
+            [[NSUserDefaults standardUserDefaults]setObject:[values objectAtIndex:index] forKey:[vars objectAtIndex:index]];
+            
         }
     }
     
@@ -51,7 +50,8 @@
     if (event == kNormal) {
         self.asteroidEvent = kNormal;
     } else {
-        float chance = frandom_range(0, 10000);
+#pragma mark CHANGE THIS CHANCE TO NEW VERSION ONCE IT COMES OUT
+        float chance = frandom_range(0, 1);
         float chanceLimit= 9990;
         if (chance>chanceLimit) {
             if (self.asteroidEvent == kNormal) {
