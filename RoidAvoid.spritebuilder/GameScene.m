@@ -28,7 +28,7 @@
 - (void) onExit
 {
     [_motionManager startAccelerometerUpdates];
-    [[OALSimpleAudio sharedInstance] playBg:@"Menu_1.m4a" loop:YES];
+    [[OALSimpleAudio sharedInstance] playBg:@"Piano.m4a" loop:YES];
     [super onExit];
 	
 }
@@ -60,7 +60,7 @@
     _motionManager = [[CMMotionManager alloc]init];
     [_motionManager startAccelerometerUpdates];
     
-    [[OALSimpleAudio sharedInstance] playBg:@"Piano.m4a" loop:YES];
+    [[OALSimpleAudio sharedInstance] playBg:@"Jazz.mp3" loop:YES];
     
     [self displayHighScore];
     [self setPlanet];

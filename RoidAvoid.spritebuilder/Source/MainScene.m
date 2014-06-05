@@ -15,7 +15,9 @@
     int highScore = [[[NSUserDefaults standardUserDefaults] objectForKey:@"HighScore"] intValue ];
     [highScoreLabel setString:[NSString stringWithFormat:@"High Score: %i",highScore]];
     
-
+    
+    Singleton *singleton = [Singleton sharedManager];
+    singleton.controlScheme = [[[NSUserDefaults standardUserDefaults] objectForKey:@"ControlScheme"]intValue];
     
     
     [super onEnter];
