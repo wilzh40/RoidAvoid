@@ -54,11 +54,25 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		779FB0CA1939908D0060CFC7 /* PBXContainerItemProxy */ = {
+		77F17B03194037C2000BF728 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = B7378940180761A80076A88C /* cocos2d-ios.xcodeproj */;
+			containerPortal = 77F17AFD194037C1000BF728 /* cocos2d-osx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E01E663D121CA00A001A484F;
+			remoteInfo = cocos2d;
+		};
+		77F17B05194037C2000BF728 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 77F17AFD194037C1000BF728 /* cocos2d-osx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D37EE9FC187D4E7700CB5EF2;
+			remoteInfo = ObjectiveChipmunk;
+		};
+		77F17B07194037DB000BF728 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 77F17AFD194037C1000BF728 /* cocos2d-osx.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 5018F24C0DFDEAC400C013A5;
+			remoteGlobalIDString = E01E663C121CA00A001A484F;
 			remoteInfo = cocos2d;
 		};
 		B737894A180761A90076A88C /* PBXContainerItemProxy */ = {
@@ -93,6 +107,7 @@
 		77B7DECC193437D600562866 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RoidAvoid/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		77B7DECE193437F800562866 /* RoidAvoidIcons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RoidAvoidIcons; sourceTree = "<group>"; };
 		77B7DED019343BCA00562866 /* Jazz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jazz.mp3; sourceTree = "<group>"; };
+		77F17AFD194037C1000BF728 /* cocos2d-osx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "cocos2d-osx.xcodeproj"; path = "../../../Downloads/cocos2d-iphone/cocos2d-osx.xcodeproj"; sourceTree = "<group>"; };
 		8E71404A1931AFC000AC6351 /* Planet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Planet.h; sourceTree = "<group>"; };
 		8E71404B1931AFC000AC6351 /* Planet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Planet.m; sourceTree = "<group>"; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
@@ -201,9 +216,19 @@
 			name = Music;
 			sourceTree = "<group>";
 		};
+		77F17AFE194037C1000BF728 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				77F17B04194037C2000BF728 /* libcocos2d.a */,
+				77F17B06194037C2000BF728 /* libObjectiveChipmunk.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9222E2B918734FF800A246C7 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				77F17AFD194037C1000BF728 /* cocos2d-osx.xcodeproj */,
 				B7378940180761A80076A88C /* cocos2d-ios.xcodeproj */,
 			);
 			name = libs;
@@ -327,7 +352,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				779FB0CB1939908D0060CFC7 /* PBXTargetDependency */,
+				77F17B08194037DB000BF728 /* PBXTargetDependency */,
 			);
 			name = RoidAvoid;
 			productName = Example;
@@ -368,6 +393,10 @@
 					ProductGroup = B7378941180761A80076A88C /* Products */;
 					ProjectRef = B7378940180761A80076A88C /* cocos2d-ios.xcodeproj */;
 				},
+				{
+					ProductGroup = 77F17AFE194037C1000BF728 /* Products */;
+					ProjectRef = 77F17AFD194037C1000BF728 /* cocos2d-osx.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -377,6 +406,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		77F17B04194037C2000BF728 /* libcocos2d.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libcocos2d.a;
+			remoteRef = 77F17B03194037C2000BF728 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		77F17B06194037C2000BF728 /* libObjectiveChipmunk.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libObjectiveChipmunk.a;
+			remoteRef = 77F17B05194037C2000BF728 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		B737894B180761A90076A88C /* libcocos2d.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -439,10 +482,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		779FB0CB1939908D0060CFC7 /* PBXTargetDependency */ = {
+		77F17B08194037DB000BF728 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = cocos2d;
-			targetProxy = 779FB0CA1939908D0060CFC7 /* PBXContainerItemProxy */;
+			targetProxy = 77F17B07194037DB000BF728 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

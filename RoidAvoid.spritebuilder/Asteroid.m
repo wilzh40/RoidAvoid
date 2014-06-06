@@ -19,6 +19,7 @@
     [self setVars];
     [self addParticles];
 	[super onEnter];
+
 }
 
 - (void) setVars

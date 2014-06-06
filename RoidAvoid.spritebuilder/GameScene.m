@@ -79,6 +79,7 @@
 - (void) setPlanet
 {
     earth = (Planet *)[CCBReader load:@"Earth"];
+    
     earth.gravityStrength = EARTH_GRAVITY;
     [physicsNode addChild:earth];
     [gravityBodies addObject:earth];
