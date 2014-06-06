@@ -54,7 +54,7 @@
     //[cocos2dSetup setObject:kEAGLColorFormatRGB565 forKey:CCConfigPixelFormat];
     
 
-    [cocos2dSetup setObject:@"YES" forKey:CCSetupShowDebugStats];
+    //[cocos2dSetup setObject:@"YES" forKey:CCSetupShowDebugStats];
 
     [self setupCocos2dWithOptions:cocos2dSetup];
     [self setDefaultVars];

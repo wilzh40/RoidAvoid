@@ -79,10 +79,11 @@
 {
     _asteroidTrail = (CCParticleSystem *)[CCBReader load:@"AsteroidTrail"];
     // make the particle effect clean itself up, once it is completed
-    //_asteroidTrail.autoRemoveOnFinish = TRUE;
+    _asteroidTrail.autoRemoveOnFinish = TRUE;
 
     _asteroidTrail.particlePositionType = CCParticleSystemPositionTypeFree;
     _asteroidTrail.opacity = 0.5f;
+
     [[self physicsNode] addChild:_asteroidTrail z:-1];
     
 

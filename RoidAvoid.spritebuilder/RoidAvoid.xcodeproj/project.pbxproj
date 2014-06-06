@@ -54,6 +54,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		77C0D4111941914F0052B3DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B7378940180761A80076A88C /* cocos2d-ios.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5018F24C0DFDEAC400C013A5;
+			remoteInfo = cocos2d;
+		};
 		77F17B03194037C2000BF728 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 77F17AFD194037C1000BF728 /* cocos2d-osx.xcodeproj */;
@@ -67,13 +74,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = D37EE9FC187D4E7700CB5EF2;
 			remoteInfo = ObjectiveChipmunk;
-		};
-		77F17B07194037DB000BF728 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 77F17AFD194037C1000BF728 /* cocos2d-osx.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = E01E663C121CA00A001A484F;
-			remoteInfo = cocos2d;
 		};
 		B737894A180761A90076A88C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -352,7 +352,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				77F17B08194037DB000BF728 /* PBXTargetDependency */,
+				77C0D4121941914F0052B3DC /* PBXTargetDependency */,
 			);
 			name = RoidAvoid;
 			productName = Example;
@@ -482,10 +482,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		77F17B08194037DB000BF728 /* PBXTargetDependency */ = {
+		77C0D4121941914F0052B3DC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = cocos2d;
-			targetProxy = 77F17B07194037DB000BF728 /* PBXContainerItemProxy */;
+			targetProxy = 77C0D4111941914F0052B3DC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
