@@ -7,6 +7,8 @@
 //
 
 #import "Singleton.h"
+#import "CCEffect.h"
+#import "CCEffectGaussianBlur.h"
 
 
 
@@ -67,5 +69,35 @@
 {
     
     
+}
+-(void) storeBlurredSprite:(CCNode*)node{
+    
+    CGSize winSize = [CCDirector sharedDirector].viewSize;
+    CCScene *scene = [[CCDirector sharedDirector] runningScene];
+
+    
+    UIImage *img = [self screenshotWithNode:node];
+    
+    CCTexture *texture = [[CCTexture alloc] initWithCGImage:img.CGImage contentScale:2.0f];
+    _blurredSprite = [CCSprite spriteWithTexture:texture];
+    _blurredSprite.flipY = TRUE;
+    _blurredSprite.position = ccp(winSize.width/2, winSize.height/2);
+    [_blurredSprite setEffect:[CCEffectGaussianBlur effectWithBlurStrength:0.005f direction:GLKVector2Make(0, 0)]];
+    [self setBlurredSprite:_blurredSprite];
+    
+}
+
+-(UIImage *)screenshotWithNode:(CCNode*)node
+{
+    //[CCDirector sharedDirector].nextDeltaTimeZero = YES;
+    
+    CGSize winSize = [[CCDirector sharedDirector]viewSize];
+    CCRenderTexture* rtx = [CCRenderTexture renderTextureWithWidth:winSize.width
+                                                            height:winSize.height];
+    [rtx begin];
+    [node visit];
+    [rtx end];
+    
+    return [rtx getUIImage];
 }
 @end

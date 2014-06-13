@@ -63,6 +63,9 @@
     
     [[OALSimpleAudio sharedInstance] playBg:@"Jazz.mp3" loop:YES];
     
+    back.visible = NO;
+    back.userInteractionEnabled = NO;
+    
     [self displayHighScore];
     [self setPlanet];
     [self setHero];
@@ -312,16 +315,42 @@
     // [self pauseActions];
     //Plays game over screen at on the same layer
     
-    CCScene *pauseScene = [CCBReader loadAsScene:@"PauseScene"];
+    //CCScene *pauseScene = [CCBReader loadAsScene:@"PauseScene"];
     
     // And add it to the game scene
-    [[CCDirector sharedDirector] pushScene:pauseScene withTransition:[CCTransition transitionCrossFadeWithDuration:0.5f]];
+    //[[CCDirector sharedDirector] pushScene:pauseScene withTransition:[CCTransition transitionCrossFadeWithDuration:0.5f]];
+    
+    // Displays a blurred background
+    [singleton storeBlurredSprite:self];
+    blurredSprite = singleton.blurredSprite;
+ 
+    [self addChild:blurredSprite];
+
+    back.zOrder = 100;
+    back.visible = YES;
+    back.userInteractionEnabled = YES;
+
+    self.paused = true;
+    
+}
+
+- (void) handleResumeGame
+{
+    [self removeChild:blurredSprite];
+    back.visible = NO;
+    back.userInteractionEnabled = NO;
+    
+    self.paused = false;
+    
+    
 }
 
 #pragma mark User Interaction
 
 - (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
+    
+    
     CGPoint touchLocation = [touch locationInNode:earth];
     if (touchLocation.x > earth.contentSize.width / 2.0f) {
         self->heroMovement = MOVE_RIGHT;
@@ -390,23 +419,7 @@
             self->heroMovement = MOVE_LEFT;
             ((CCSprite *)hero).flipX = FALSE;
         }
-        
-        //    else if (newHeroAngle - newTiltAngle < 0 || newHeroAngle - newTiltAngle > halfCircle) {
-        //        self->heroMovement = MOVE_LEFT;
-        //        ((CCSprite *)hero).flipX = FALSE;
-        //    }
-        //    if (newHeroAngle - tiltAngle > tolerance || newHeroAngle - tiltAngle < -halfCircle) {
-        //        self->heroMovement = MOVE_RIGHT;
-        //        ((CCSprite *)hero).flipX = TRUE;
-        //
-        //    }
-        //    else if (newHeroAngle - tiltAngle < -tolerance || newHeroAngle - tiltAngle > halfCircle){
-        //        self->heroMovement = MOVE_LEFT
-        //        ((CCSprite *)hero).flipX = FALSE;
-        
-        // else self->heroMovement = MOVE_STILL;
-        
-        //NSLog(@"%i,%i", newTiltAngle, newHeroAngle);
+
     }
 }
 

@@ -83,6 +83,9 @@ typedef NS_ENUM(NSUInteger, AsteroidEvent) {
 - (void)setDefaultVars;
 - (void)chooseEvent:(AsteroidEvent)event;
 
+- (UIImage *)screenshotWithNode:(CCNode*)node;
+- (void)storeBlurredSprite:(CCNode*)node;
+
 @property (readwrite,nonatomic) int score;
 @property (readwrite,nonatomic) bool firstGame;
 
@@ -92,4 +95,5 @@ typedef NS_ENUM(NSUInteger, AsteroidEvent) {
 @property (readwrite,nonatomic) CGPoint asteroidPos;
 @property (readwrite,nonatomic) CGPoint calibrationVector;
 
+@property (readwrite,retain) CCSprite *blurredSprite;
 @end

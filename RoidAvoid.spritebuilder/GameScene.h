@@ -40,6 +40,9 @@ enum HeroMovement {
     
     float timer, nextFallTime,fallInterval,qForFall,currentFallType,asteroidSize,asteroidPosition,fallingSpeed;
     double curTime;
+    
+    CCSprite *blurredSprite;
+    CCButton *back, *pause;
 }
 
 @end

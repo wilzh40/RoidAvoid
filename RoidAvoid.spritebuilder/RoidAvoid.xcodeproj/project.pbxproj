@@ -22,6 +22,7 @@
 		77B7DECD193437D600562866 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77B7DECC193437D600562866 /* Images.xcassets */; };
 		77B7DECF193437F800562866 /* RoidAvoidIcons in Resources */ = {isa = PBXBuildFile; fileRef = 77B7DECE193437F800562866 /* RoidAvoidIcons */; };
 		77B7DED119343BCA00562866 /* Jazz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 77B7DED019343BCA00562866 /* Jazz.mp3 */; };
+		77BFB118194AC44600CE70B8 /* PauseScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 77BFB117194AC44600CE70B8 /* PauseScene.m */; };
 		8E71404C1931AFC000AC6351 /* Planet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E71404B1931AFC000AC6351 /* Planet.m */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
@@ -107,6 +108,8 @@
 		77B7DECC193437D600562866 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RoidAvoid/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		77B7DECE193437F800562866 /* RoidAvoidIcons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RoidAvoidIcons; sourceTree = "<group>"; };
 		77B7DED019343BCA00562866 /* Jazz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Jazz.mp3; sourceTree = "<group>"; };
+		77BFB116194AC44600CE70B8 /* PauseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseScene.h; sourceTree = "<group>"; };
+		77BFB117194AC44600CE70B8 /* PauseScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseScene.m; sourceTree = "<group>"; };
 		77F17AFD194037C1000BF728 /* cocos2d-osx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "cocos2d-osx.xcodeproj"; path = "../../../Downloads/cocos2d-iphone/cocos2d-osx.xcodeproj"; sourceTree = "<group>"; };
 		8E71404A1931AFC000AC6351 /* Planet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Planet.h; sourceTree = "<group>"; };
 		8E71404B1931AFC000AC6351 /* Planet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Planet.m; sourceTree = "<group>"; };
@@ -192,6 +195,8 @@
 				7760395F19314DE80054E6FD /* GameScene.m */,
 				775498421931DF8A00787D1A /* GameOverScene.h */,
 				775498431931DF8A00787D1A /* GameOverScene.m */,
+				77BFB116194AC44600CE70B8 /* PauseScene.h */,
+				77BFB117194AC44600CE70B8 /* PauseScene.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -476,6 +481,7 @@
 				B73789871807631A0076A88C /* main.m in Sources */,
 				7760395D19314A900054E6FD /* CreditsScene.m in Sources */,
 				77603970193153AC0054E6FD /* Hero.m in Sources */,
+				77BFB118194AC44600CE70B8 /* PauseScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
