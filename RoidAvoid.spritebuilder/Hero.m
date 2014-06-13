@@ -22,7 +22,7 @@
     self.scale = 0.5f;
     
     CCPhysicsBody *physicsBody = self.physicsBody;
-    
+    physicsBody.type = CCPhysicsBodyTypeStatic;
     // This is used to pick which collision delegate method to call, see GameScene.m for more info.
 	physicsBody.collisionType = @"hero";
 	// This sets up simple collision rules.

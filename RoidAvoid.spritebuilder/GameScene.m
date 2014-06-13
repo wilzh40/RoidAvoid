@@ -7,7 +7,8 @@
 //
 
 #import "GameScene.h"
-
+#import "CCEffect.h"
+#import "CCEffectGaussianBlur.h"
 @implementation GameScene
 
 - (void) onEnter
@@ -81,6 +82,7 @@
     earth = (Planet *)[CCBReader load:@"Earth"];
     
     earth.gravityStrength = EARTH_GRAVITY;
+
     [physicsNode addChild:earth];
     [gravityBodies addObject:earth];
 }
