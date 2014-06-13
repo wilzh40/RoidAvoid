@@ -312,24 +312,31 @@
 
 - (void) handlePauseGame
 {
-    // [self pauseActions];
-    //Plays game over screen at on the same layer
-    
-    //CCScene *pauseScene = [CCBReader loadAsScene:@"PauseScene"];
-    
-    // And add it to the game scene
-    //[[CCDirector sharedDirector] pushScene:pauseScene withTransition:[CCTransition transitionCrossFadeWithDuration:0.5f]];
     
     // Displays a blurred background
     [singleton storeBlurredSprite:self];
     blurredSprite = singleton.blurredSprite;
- 
+    
+    
+    CCActionFiniteTime *fadeOut = [CCActionFadeOut actionWithDuration:1.0f];
+    CCActionFiniteTime *fadeIn = [CCActionFadeOut actionWithDuration:1.0f];
+    CCAction
+    [blurredSprite runAction:[CCActionSequence actionWithArray:@[fadeOut,fadeIn]]];
+    
     [self addChild:blurredSprite];
 
+    // Enable the Back Button
     back.zOrder = 100;
     back.visible = YES;
     back.userInteractionEnabled = YES;
-
+    pause.visible = NO;
+    pause.userInteractionEnabled = NO;
+    
+   // [blurredSprite runAction:[CCActionFadeTo actionWithDuration:0.1f opacity:0.0f]];
+    
+    [back runAction:[CCActionFadeTo actionWithDuration:0.1f opacity:0.0f]];
+    [back runAction:[CCActionFadeTo actionWithDuration:1.0f opacity:1.0f]];
+    // Pauses the Game
     self.paused = true;
     
 }
@@ -339,6 +346,8 @@
     [self removeChild:blurredSprite];
     back.visible = NO;
     back.userInteractionEnabled = NO;
+    pause.visible = YES;
+    pause.userInteractionEnabled = YES;
     
     self.paused = false;
     

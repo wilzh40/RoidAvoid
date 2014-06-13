@@ -1300,8 +1300,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -1435,6 +1433,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>backgroundOpacity|Normal</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.20000000298023224</real>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>backgroundSpriteFrame|Highlighted</string>
 						<key>type</key>
 						<string>SpriteFrame</string>
@@ -1443,6 +1449,14 @@
 							<string></string>
 							<string>ccbResources/ccbButtonHighlighted.png</string>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>backgroundOpacity|Highlighted</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1470,6 +1484,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>backgroundOpacity|Disabled</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>labelOpacity|Disabled</string>
 						<key>type</key>
 						<string>Float</string>
@@ -1486,6 +1508,14 @@
 							<string></string>
 							<string>ccbResources/ccbButtonNormal.png</string>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>backgroundOpacity|Selected</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1628,6 +1658,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

@@ -80,9 +80,12 @@
     
     CCTexture *texture = [[CCTexture alloc] initWithCGImage:img.CGImage contentScale:2.0f];
     _blurredSprite = [CCSprite spriteWithTexture:texture];
-    _blurredSprite.flipY = TRUE;
+
     _blurredSprite.position = ccp(winSize.width/2, winSize.height/2);
+    
     [_blurredSprite setEffect:[CCEffectGaussianBlur effectWithBlurStrength:0.005f direction:GLKVector2Make(0, 0)]];
+    _blurredSprite.scaleY *= -1;
+
     [self setBlurredSprite:_blurredSprite];
     
 }
