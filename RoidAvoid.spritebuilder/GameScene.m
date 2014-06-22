@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "CCEffect.h"
 #import "CCEffectGaussianBlur.h"
+#import "CCEffectGlow.h"
 @implementation GameScene
 
 - (void) onEnter
@@ -85,7 +86,7 @@
     earth = (Planet *)[CCBReader load:@"Earth"];
     
     earth.gravityStrength = EARTH_GRAVITY;
-
+    [earth setEffect:[CCEffectGlow effectWithBlurStrength:1.2f]];
     [physicsNode addChild:earth];
     [gravityBodies addObject:earth];
 }
@@ -97,6 +98,10 @@
         [physicsNode addChild:hero z:5];
     }
     heroAngle = HERO_INITIAL_ANGLE;
+    CCAnimationManager *heroManager = hero.userObject;
+    [heroManager runAnimationsForSequenceNamed:@"Still"];
+    
+    
     [self updateHeroToRotation];
 }
 
@@ -317,10 +322,9 @@
     [singleton storeBlurredSprite:self];
     blurredSprite = singleton.blurredSprite;
     
-    
     CCActionFiniteTime *fadeOut = [CCActionFadeOut actionWithDuration:1.0f];
     CCActionFiniteTime *fadeIn = [CCActionFadeOut actionWithDuration:1.0f];
-    CCAction
+    
     [blurredSprite runAction:[CCActionSequence actionWithArray:@[fadeOut,fadeIn]]];
     
     [self addChild:blurredSprite];
@@ -331,7 +335,8 @@
     back.userInteractionEnabled = YES;
     pause.visible = NO;
     pause.userInteractionEnabled = NO;
-    
+
+
    // [blurredSprite runAction:[CCActionFadeTo actionWithDuration:0.1f opacity:0.0f]];
     
     [back runAction:[CCActionFadeTo actionWithDuration:0.1f opacity:0.0f]];
@@ -349,7 +354,7 @@
     pause.visible = YES;
     pause.userInteractionEnabled = YES;
     
-    self.paused = false;
+self.paused = false;
     
     
 }
@@ -358,7 +363,9 @@
 
 - (void) touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    
+    CCAnimationManager *heroManager = hero.userObject;
+    [heroManager runAnimationsForSequenceNamed:@"Walking"];
+
     
     CGPoint touchLocation = [touch locationInNode:earth];
     if (touchLocation.x > earth.contentSize.width / 2.0f) {
@@ -373,7 +380,8 @@
 
 - (void) touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-
+    CCAnimationManager *heroManager = hero.userObject;
+    [heroManager runAnimationsForSequenceNamed:@"Still"];
     [self releaseMovement];
 }
 
@@ -416,6 +424,8 @@
         
         if ((int)fabs(angleDiff)%360 < tolerance ) {
             self->heroMovement = MOVE_STILL;
+            CCAnimationManager *heroManager = hero.userObject;
+            [heroManager runAnimationsForSequenceNamed:@"Still"];
         }
         
         //Code for looping the dinosaur around the circle when the angle difference is high but the distance is close
@@ -423,10 +433,15 @@
         else if ((angleDiff > 0 && angleDiff < halfCircle) || (angleDiff < 0 && angleDiff < -halfCircle)) {
             self->heroMovement = MOVE_RIGHT;
             ((CCSprite *)hero).flipX = TRUE;
+            CCAnimationManager *heroManager = hero.userObject;
+            [heroManager runAnimationsForSequenceNamed:@"Walking"];
+            
         }
         else {
             self->heroMovement = MOVE_LEFT;
             ((CCSprite *)hero).flipX = FALSE;
+            CCAnimationManager *heroManager = hero.userObject;
+            [heroManager runAnimationsForSequenceNamed:@"Walking"];
         }
 
     }
@@ -437,7 +452,20 @@
 
 - (void) moveHero:(CCTime) dt
 {
-    
+//    switch (heroMovement) {
+//        case MOVE_LEFT:
+//            [heroManager runAnimationsForSequenceNamed:@"Walking"];
+//            ((CCSprite *)hero).flipX = FALSE;
+//            break;
+//        case MOVE_RIGHT:
+//            [heroManager runAnimationsForSequenceNamed:@"Walking"];
+//            ((CCSprite *)hero).flipX = TRUE;
+//            break;
+//        case MOVE_STILL:
+//            [heroManager runAnimationsForSequenceNamed:@"Still"];
+//        default:
+//            break;
+//    }
     heroAngle += dt * self->heroMovement * HERO_MOVE_SPEED;
     [self updateHeroToRotation];
 }

@@ -73,7 +73,7 @@
 -(void) storeBlurredSprite:(CCNode*)node{
     
     CGSize winSize = [CCDirector sharedDirector].viewSize;
-    CCScene *scene = [[CCDirector sharedDirector] runningScene];
+
 
     
     UIImage *img = [self screenshotWithNode:node];

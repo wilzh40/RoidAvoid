@@ -21,7 +21,7 @@ enum HeroMovement {
     MOVE_LEFT,
 };
 
-@interface GameScene : CCNode <CCPhysicsCollisionDelegate,UIAccelerometerDelegate> {
+@interface GameScene : CCNode <CCPhysicsCollisionDelegate,UIAccelerometerDelegate,CCBAnimationManagerDelegate> {
     CGSize winSize;
     Singleton *singleton;
     CCPhysicsNode *physicsNode;
@@ -37,12 +37,15 @@ enum HeroMovement {
     CCLabelTTF *highScoreLabel;
     
     CMMotionManager *_motionManager;
+//    CCAnimationManager *heroManager;
     
     float timer, nextFallTime,fallInterval,qForFall,currentFallType,asteroidSize,asteroidPosition,fallingSpeed;
     double curTime;
     
     CCSprite *blurredSprite;
     CCButton *back, *pause;
+    
+    
 }
 
 @end

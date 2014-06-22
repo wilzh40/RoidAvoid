@@ -7,6 +7,8 @@
 //
 
 #import "Planet.h"
+#import "CCEffect.h"
+#import "CCEffectGlow.h"
 
 @implementation Planet
 
@@ -29,6 +31,7 @@
 	physicsBody.collisionCategories = @[@"planet"];
 	// Then you list which categories its allowed to collide with.
 	physicsBody.collisionMask = @[@"hero", @"asteroid",@"boundary"];
-}
+    
+    [self setEffect:[CCEffectGlow effectWithBlurStrength:0.5]];}
 
 @end
